@@ -1,0 +1,14 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui;
+  background: #292a33;
+  color: white;
+  text-align: center;
+  overflow: hidden;
+}
