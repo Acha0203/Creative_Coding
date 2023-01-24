@@ -7,10 +7,10 @@ function setup() {
   colorMode(HSB);
   noStroke();
 
-  for (let y = 0; y < n; y++) {
-    for (let x = 0; x < n; x++) {
-      const tx = (W / (n - 1)) * x;
-      const ty = (W / (n - 1)) * y;
+  for (let y = -6; y < n; y++) {
+    for (let x = -6; x < n; x++) {
+      const tx = (1000 / (n - 1)) * x;
+      const ty = (1000 / (n - 1)) * y;
 
       circles.push({ x: tx, y: ty });
     }
@@ -18,7 +18,7 @@ function setup() {
 }
 
 function draw() {
-  background(0, 0.05);
+  background(0, 0.01);
   fill(frameCount % 360, 80, 100);
 
   for (let c of circles) {
