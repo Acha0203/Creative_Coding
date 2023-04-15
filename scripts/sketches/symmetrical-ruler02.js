@@ -1,13 +1,15 @@
 function setup() {
-  createCanvas(500, 500);
+  createARCanvas(1000, 1000);
   colorMode(HSB);
   noFill();
 }
 
 function draw() {
-  background(0, 0.03);
+  clear();
+  // background(0, 0.03);
 
   stroke(frameCount % 360, 80, 100);
+  strokeWeight(5);
   var direction = 1; // どちらの方向に動くかのフラグ
   for (var r = 0; r < TAU; r += PI / 8) {
     var angle = r + (sin(frameCount / 50) / 3) * direction;

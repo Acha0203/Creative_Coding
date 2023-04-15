@@ -10,7 +10,7 @@ draw = () => {
   fill(c, h, h);
   text('Happy', r, s);
   fill(c + 10, h, h);
-  text('NEW YEAR!', r + T, s + T);
+  text('New Year!', r + T, s + T);
   fill(c + 20, h, h);
   text('2023', r + T * 2, s + T * 2);
 };
