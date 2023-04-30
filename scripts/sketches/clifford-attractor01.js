@@ -15,7 +15,7 @@ function setup() {
 
   translate(W / 2, W / 2);
 
-  for (let i = 0; i < 100000; i++) {
+  for (let i = 0; i < 1e5; i++) {
     x_next = sin(a * y_now) + c * cos(a * x_now);
     y_next = sin(b * x_now) + d * cos(b * y_now);
 
