@@ -1,6 +1,7 @@
 function setup() {
-  createCanvas((w = 800), w);
-  background(255);
+  createCanvas((W = 700), W);
+  background(0);
+  blendMode(ADD);
 
   let draw_scale = 100;
 
@@ -12,13 +13,13 @@ function setup() {
     c = -1.8,
     d = -0.4;
 
-  translate(w / 2, w / 2);
+  translate(W / 2, W / 2);
 
   for (let i = 0; i < 100000; i++) {
     x_next = sin(a * y_now) + c * cos(a * x_now);
     y_next = sin(b * x_now) + d * cos(b * y_now);
 
-    stroke(0, 100, 100);
+    stroke(0, 100, 100, 100);
     point(x_next * draw_scale, y_next * draw_scale);
 
     x_now = x_next;

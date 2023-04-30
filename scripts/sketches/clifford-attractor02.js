@@ -8,7 +8,7 @@ setup = () => {
   for (let i = 0; i < 100000; i++) {
     x = sin(a * w) + c * cos(a * v);
     y = sin(b * v) + d * cos(b * w);
-    stroke(0, s, s);
+    stroke(0, s, s, s);
     point(x * s, y * s);
     v = x;
     w = y;
