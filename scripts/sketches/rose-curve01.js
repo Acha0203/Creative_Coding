@@ -1,6 +1,6 @@
-const radius = 150;
-let n = 9;
-let d = 4;
+const radius = 250;
+const n = 10;
+const d = 4;
 let x = 0;
 let y = 0;
 let bx = 0;
@@ -12,7 +12,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   // stroke(255);
   strokeWeight(1);
-  background(0);
+  background(0, 10);
   angleMode(DEGREES);
   colorMode(HSB, 100);
 }
