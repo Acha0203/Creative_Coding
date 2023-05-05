@@ -50,9 +50,9 @@ Particle.prototype.update = function () {
 
 // Method to display
 Particle.prototype.display = function (colorCount) {
-  stroke(colorCount, 150 - colorCount, 100 + colorCount, this.lifespan);
+  stroke(0, 200 - colorCount, 100 + colorCount, this.lifespan);
   strokeWeight(2);
-  fill(colorCount, 100 - colorCount, 50 + colorCount, this.lifespan);
+  fill(0, 150 - colorCount, 50 + colorCount, this.lifespan);
   ellipse(this.position.x, this.position.y, 12, 12);
 };
 
@@ -130,7 +130,7 @@ CrazyParticle.prototype.display = function (colorCount) {
   push();
   translate(this.position.x, this.position.y);
   rotate(this.theta);
-  stroke(colorCount, 150 - colorCount, 100 + colorCount, this.lifespan);
+  stroke(0, 200 - colorCount, 100 + colorCount, this.lifespan);
   line(0, 0, 25, 0);
   pop();
 };
