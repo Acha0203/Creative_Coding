@@ -24,14 +24,14 @@ function draw() {
 }
 
 function mousePressed() {
-  green -= 10 * greenD;
-  blue += 10 * blueD;
+  green -= 20 * greenD;
+  blue += 20 * blueD;
 
   if (green >= 250 || green <= 100) {
     greenD *= -1;
   }
 
-  if (blue >= 250 || blue <= 100) {
+  if (blue >= 240 || blue <= 100) {
     blueD *= -1;
   }
 
