@@ -1,10 +1,12 @@
 const colors = ['#22577a', '#3873a5', '#5799cc', '#8099ed', '#a7ccf9'];
-const n = 50;
+let n;
 let circles = [];
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
   noFill();
+
+  n = Math.floor(width * height * 0.00005);
 
   for (let i = 0; i < n; i++) {
     circles.push({
