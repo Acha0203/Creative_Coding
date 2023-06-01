@@ -16,3 +16,4 @@ draw = () => {
     r = r > W / 2 ? 0 : r + 2;
   }
 };
+// #つぶやきProcessing #p5js
