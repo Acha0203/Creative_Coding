@@ -1,4 +1,4 @@
-c1, c2;
+let c1, c2;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -14,14 +14,18 @@ function draw() {
   for (let i = 0; i < 10; i++) {
     stroke(lerpColor(c1, c2, noise(frameCount / 100, 0 + i)));
 
-    const x1 = width * noise(frameCount / 100, 0 + i);
-    const x2 = width * noise(frameCount / 100, 10 + i);
-    const x3 = width * noise(frameCount / 100, 20 + i);
-    const x4 = width * noise(frameCount / 100, 30 + i);
-    const y1 = height * noise(frameCount / 100, 40 + i);
-    const y2 = height * noise(frameCount / 100, 50 + i);
-    const y3 = height * noise(frameCount / 100, 60 + i);
-    const y4 = height * noise(frameCount / 100, 70 + i);
+    const fn = (m, n) => {
+      return m * noise(frameCount / 100, n + i);
+    };
+
+    const x1 = fn(width, 0);
+    const x2 = fn(width, 10);
+    const x3 = fn(width, 20);
+    const x4 = fn(width, 30);
+    const y1 = fn(height, 40);
+    const y2 = fn(height, 50);
+    const y3 = fn(height, 60);
+    const y4 = fn(height, 70);
 
     bezier(x1, y1, x2, y2, x3, y3, x4, y4);
   }
