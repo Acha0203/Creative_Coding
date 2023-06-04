@@ -4,6 +4,7 @@ let direction = -1;
 function setup() {
   createCanvas(windowWidth, windowHeight);
   colorMode(HSB);
+  angleMode(DEGREES);
   noFill();
   size = windowWidth / 3;
   x = 0;
@@ -17,8 +18,8 @@ function setup() {
 
 function draw() {
   background(0, 0.01);
-  const stepTh = PI / 72;
-  const startTh = PI * -0.75 + PI / 72;
+  const step = 2.5;
+  const start = -135 + step;
 
   if (gx > width && x > width) {
     fy += size * 1.2;
@@ -42,8 +43,10 @@ function draw() {
     direction = -direction;
   }
 
-  gx = x + size * cos(startTh + stepTh * (frameCount % 36));
-  gy = y + size * sin(startTh + stepTh * (frameCount % 36)) * direction;
+  const angle = start + step * (frameCount % 36);
+
+  gx = x + size * cos(angle);
+  gy = y + size * sin(angle) * direction;
   stroke((x * y) % 360, 100, 100 - (frameCount % 36) * 2);
   line(x, y, gx, gy);
 }

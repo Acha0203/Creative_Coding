@@ -35,7 +35,7 @@ function mousePressed() {
     blueD *= -1;
   }
 
-  this.p = new ParticleSystem(createVector(mouseX, mouseY), green, blue);
+  p = new ParticleSystem(createVector(mouseX, mouseY), green, blue);
   systems.push(p);
 }
 
