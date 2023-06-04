@@ -85,7 +85,6 @@ let ParticleSystem = function (position, green, blue) {
 };
 
 ParticleSystem.prototype.addParticle = function () {
-  // Add a Particle to the system
   p = new Particle(this.origin, random(5, 25));
 
   this.particles.push(p);
