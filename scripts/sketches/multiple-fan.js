@@ -8,7 +8,7 @@ function setup() {
   noFill();
   size = windowWidth / 3;
   x = 0;
-  y = size / 5;
+  y = size / 3;
   gx = 0;
   gy = 0;
   fx = x;
@@ -18,7 +18,7 @@ function setup() {
 
 function draw() {
   background(0, 0.01);
-  const step = 2.5;
+  const step = 3;
   const start = -135 + step;
 
   if (gx > width && x > width) {
@@ -37,16 +37,16 @@ function draw() {
     count = 0;
   }
 
-  if (frameCount % 36 == 0) {
+  if (frameCount % 30 == 0) {
     x = gx;
     y = gy;
     direction = -direction;
   }
 
-  const angle = start + step * (frameCount % 36);
+  const angle = start + step * (frameCount % 30);
 
   gx = x + size * cos(angle);
   gy = y + size * sin(angle) * direction;
-  stroke((x * y) % 360, 100, 100 - (frameCount % 36) * 2);
+  stroke((x * y) % 360, 100, 100 - (frameCount % 30) * 2);
   line(x, y, gx, gy);
 }
