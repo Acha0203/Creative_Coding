@@ -1,3 +1,4 @@
+// #minacoding Day 4
 let systems;
 let green = 100;
 let blue = 150;
