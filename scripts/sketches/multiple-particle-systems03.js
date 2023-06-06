@@ -29,9 +29,7 @@ function draw() {
       addNewParticles(width / 2, height / 2);
       isFirst = false;
     } else {
-      setTimeout(() => {
-        isFirst = true;
-      }, 4000);
+      isFirst = frameCount % 400 === 0 ? true : false;
     }
   }
 }
