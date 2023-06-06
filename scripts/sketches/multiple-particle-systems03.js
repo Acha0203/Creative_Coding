@@ -150,3 +150,4 @@ ParticleSystem.prototype.run = function () {
 ParticleSystem.prototype.destroySystem = function () {
   this.particles = [];
 };
+// #p5js #minacoding
