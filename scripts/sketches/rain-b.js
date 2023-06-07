@@ -23,4 +23,4 @@ I = () => {
   x = R(0, W);
   y = R(0, W);
 };
-// #つぶやきProcessing #p5js #minacoding Day 9
+// #つぶやきProcessing #p5js #minacoding Day 10
