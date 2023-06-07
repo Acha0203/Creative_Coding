@@ -18,11 +18,11 @@ function setup() {
     let y = random(W);
     let t = 0;
 
-    let lx = random(1, 10);
+    let lx = random(5, 10);
     let rx = random(0.01, 0.3);
     let ofx = random(PI);
 
-    let ly = random(1, 10);
+    let ly = random(1, 5);
     let ry = random(0.01, 0.3);
     let ofy = random(PI);
 
