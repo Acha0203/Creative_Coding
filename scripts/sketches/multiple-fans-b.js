@@ -5,8 +5,7 @@ l = 150;
 S = 180;
 d = -1;
 draw = () => {
-  t++ || createCanvas((W = 637), W);
-  background(0, 0.5);
+  t++ || (createCanvas((W = 637), W), background(0));
   if (X > W && x > W) {
     b += S;
     x = 0;
@@ -29,7 +28,7 @@ draw = () => {
   A = -0.733 * PI + (PI / s) * (t % T);
   X = x + l * cos(A);
   Y = y + l * sin(A) * d;
-  stroke(T, T, Y);
+  stroke(T, A, Y);
   line(x, y, X, Y);
 };
-// #つぶやきProcessing #p5js #minacoding
+// #つぶやきProcessing #p5js #dailycodingseed #minacoding Day 9
