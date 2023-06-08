@@ -6,7 +6,7 @@ maxSize = 300;
 function setup() {
   createCanvas(windowWidth, windowHeight);
   noFill();
-  n = Math.floor((width * height * 6) / 1e5);
+  n = Math.floor(width * height * (6 / 1e5));
   initRipples();
 }
 
