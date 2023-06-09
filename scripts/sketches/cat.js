@@ -1,5 +1,22 @@
 let layer1, layer2;
 
+drawEars = (layer, d) => {
+  layer.triangle(
+    width / 2 - 90 * d,
+    height / 2 - 180,
+    width / 2 - 120 * d,
+    height / 2 - 70,
+    width / 2 - 20 * d,
+    height / 2 - 100
+  );
+};
+
+drawWhiskers = (layer, x, y, d) => {
+  layer.line(x - 100 * d, y + 30, x - 50 * d, y + 50);
+  layer.line(x - 100 * d, y + 60, x - 50 * d, y + 60);
+  layer.line(x - 100 * d, y + 90, x - 50 * d, y + 70);
+};
+
 setup = () => {
   createCanvas(windowWidth, windowHeight);
   layer1 = createGraphics(width, height);
@@ -7,22 +24,8 @@ setup = () => {
   layer1.background(255);
   layer1.fill(0);
   layer1.ellipse(width / 2, height / 2, 300, 250);
-  layer1.triangle(
-    width / 2 - 90,
-    height / 2 - 180,
-    width / 2 - 120,
-    height / 2 - 70,
-    width / 2 - 20,
-    height / 2 - 100
-  );
-  layer1.triangle(
-    width / 2 + 90,
-    height / 2 - 180,
-    width / 2 + 120,
-    height / 2 - 70,
-    width / 2 + 20,
-    height / 2 - 100
-  );
+  drawEars(layer1, 1);
+  drawEars(layer1, -1);
 };
 
 draw = () => {
@@ -43,12 +46,8 @@ draw = () => {
   layer2.circle(x - 60, y - 10, 9);
   layer2.circle(x + 80, y - 10, 9);
   layer2.stroke(50);
-  layer2.line(x - 100, y + 30, x - 50, y + 50);
-  layer2.line(x - 100, y + 60, x - 50, y + 60);
-  layer2.line(x - 100, y + 90, x - 50, y + 70);
-  layer2.line(x + 100, y + 30, x + 50, y + 50);
-  layer2.line(x + 100, y + 60, x + 50, y + 60);
-  layer2.line(x + 100, y + 90, x + 50, y + 70);
+  drawWhiskers(layer2, x, y, 1);
+  drawWhiskers(layer2, x, y, -1);
 
   image(layer1, 0, 0);
   image(layer2, 0, 0);
