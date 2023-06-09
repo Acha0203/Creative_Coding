@@ -32,18 +32,6 @@ draw = () => {
   x += floor(movedX / 2);
   y += floor(movedY / 2);
 
-  // if (x > width / 2 + 73) {
-  //   x -= 2;
-  // } else if (x < width / 2 - 73) {
-  //   x += 2;
-  // }
-
-  // if (y > height / 2 + 73) {
-  //   y -= 2;
-  // } else if (y < height / 2 - 73) {
-  //   y += 2;
-  // }
-
   layer2.clear();
   layer2.fill(50);
   layer2.circle(x - 70, y, 50);
