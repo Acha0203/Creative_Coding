@@ -11,15 +11,18 @@ draw = () => {
     noFill());
   background(0, 0.05);
   for (let i = 0; i < 10; i++) {
-    stroke(lerpColor(C(1, H, H), C(W / 2, H, 10), N(t / H, 0 + i)));
-    a = W * N(t / H, 0 + i);
-    b = W * N(t / H, 1 + i);
-    c = W * N(t / H, 2 + i);
-    d = W * N(t / H, 3 + i);
-    e = W * N(t / H, 4 + i);
-    f = W * N(t / H, 5 + i);
-    g = W * N(t / H, 6 + i);
-    h = W * N(t / H, 7 + i);
+    stroke(lerpColor(C(1, H, H), C(W / 2, H, 10), N(t / H, i)));
+    a = F(0, i);
+    b = F(1, i);
+    c = F(2, i);
+    d = F(3, i);
+    e = F(4, i);
+    f = F(5, i);
+    g = F(6, i);
+    h = F(7, i);
     bezier(a, e, b, f, c, g, d, h);
   }
+};
+F = (p, i) => {
+  return W * N(t / H, p + i);
 };

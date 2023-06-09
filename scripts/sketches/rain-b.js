@@ -24,3 +24,9 @@ I = () => {
   y = R(0, W);
 };
 // #つぶやきProcessing #p5js #minacoding Day 10
+
+keyPressed = () => {
+  if (key === 's') {
+    saveGif('rain-b', 30);
+  }
+};

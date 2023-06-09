@@ -12,7 +12,7 @@ function draw() {
   background(0, 0.05);
 
   for (let i = 0; i < 10; i++) {
-    stroke(lerpColor(c1, c2, noise(frameCount / 100, 0 + i)));
+    stroke(lerpColor(c1, c2, noise(frameCount / 100, i)));
 
     const fn = (m, n) => {
       return m * noise(frameCount / 100, n + i);

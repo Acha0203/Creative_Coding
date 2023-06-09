@@ -17,8 +17,7 @@ draw = () => {
 // #つぶやきProcessing #minacoding Day 9
 
 keyPressed = () => {
-  // this will download the first 5 seconds of the animation!
   if (key === 's') {
-    saveGif('mySketch', 5);
+    saveGif('trigonometric-wave-b', 20);
   }
 };
