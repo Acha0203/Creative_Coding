@@ -7,21 +7,11 @@ drawHuman = (d) => {
   const x2 = fn(width / 2, -100 * d);
   const x3 = fn(0, width);
   const x4 = fn(width / 2, 0);
-  const y1 = fn(height / 2, 300);
-  const y2 = fn(height / 2, 300);
-  const y3 = fn(height / 2, 300);
+  const y1 = (y2 = y3 = fn(height / 2, 300));
   const y4 = fn(height / 2, 0);
 
-  // stroke(255, 102, 0);
-  // line(x1, y1, x2, y2);
-  // line(x3, y3, x4, y4);
-  // stroke(255);
   bezier(x1, y1, x2, y2, x3, y3, x4, y4);
-
-  push();
-  fill(255);
-  circle(x4, y4 - 100 * noise(frameCount / 100), 50);
-  pop();
+  circle(x4, fn(y4, -100), 50);
 };
 
 setup = () => {
