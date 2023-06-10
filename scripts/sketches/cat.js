@@ -15,6 +15,16 @@ drawWhiskers = (x, y, d) => {
   line(x - 100 * d, y + 90, x - 50 * d, y + 70);
 };
 
+drawEyes = (x, y) => {
+  circle(x - 70, y, 50);
+  circle(x + 70, y, 50);
+};
+
+drawEyeLights = (x, y) => {
+  circle(x - 60, y - 10, 9);
+  circle(x + 80, y - 10, 9);
+};
+
 setup = () => {
   createCanvas(windowWidth, windowHeight);
 };
@@ -34,14 +44,12 @@ draw = () => {
   drawEars(1);
   drawEars(-1);
   fill(50);
-  circle(x - 70, y, 50);
-  circle(x + 70, y, 50);
+  drawEyes(x, y);
   rect(x - 2, y + 30, 4, 40);
   rect(x - 20, y + 70, 40, 4);
   ellipse(x, y + 40, 30, 20);
   fill(255);
-  circle(x - 60, y - 10, 9);
-  circle(x + 80, y - 10, 9);
+  drawEyeLights(x, y);
   stroke(50);
   drawWhiskers(x, y, 1);
   drawWhiskers(x, y, -1);
