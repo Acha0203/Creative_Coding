@@ -12,11 +12,19 @@ D = (n, m) => {
 };
 draw = () => {
   t++ || (createCanvas((W = 500), W, WEBGL), noStroke());
-  clear();
+  background(0);
   blendMode(ADD);
   lights();
   for (i = 1; i < 10; i++) {
     rotateZ(t * 0.005);
     D(i * 10, i * 90);
+  }
+};
+
+// #つぶやきProcessing #p5js #dailycodingseed
+
+keyPressed = () => {
+  if (key === 's') {
+    saveGif('tentacles-b', 10);
   }
 };

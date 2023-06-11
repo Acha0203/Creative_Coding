@@ -21,3 +21,9 @@ draw = () => {
   D(-1);
 };
 // #つぶやきProcessing #p5js #minacoding Day 12
+
+keyPressed = () => {
+  if (key === 's') {
+    saveGif('dance-b', 10);
+  }
+};

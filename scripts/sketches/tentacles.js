@@ -2,8 +2,8 @@ t = angle = length = x = y = z = 0;
 
 drawSphere = (n, m) => {
   for (r = 0; r < TAU; r += PI / n) {
-    angle = r + sin(frameCount / 50) * 0.2;
-    length = noise(frameCount / 500) * m;
+    angle = r + noise(frameCount / 90) * 0.2;
+    length = noise(frameCount / 90) * m;
     x = cos(angle) * length;
     y = sin(angle) * length;
     z = tan(angle) * length;

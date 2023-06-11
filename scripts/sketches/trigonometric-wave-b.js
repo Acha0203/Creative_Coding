@@ -14,7 +14,7 @@ draw = () => {
     );
   }
 };
-// #つぶやきProcessing #minacoding Day 9
+// #つぶやきProcessing #minacoding Day 13
 
 keyPressed = () => {
   if (key === 's') {
