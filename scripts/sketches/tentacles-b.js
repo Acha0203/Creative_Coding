@@ -1,0 +1,22 @@
+t = a = l = N = 0;
+D = (n, m) => {
+  N = noise(t / 90);
+  for (r = 0; r < TAU; r += PI / n) {
+    a = r + N * 0.2;
+    l = N * m;
+    push();
+    translate(cos(a) * l, sin(a) * l, tan(a) * l);
+    sphere(m / 30);
+    pop();
+  }
+};
+draw = () => {
+  t++ || (createCanvas((W = 500), W, WEBGL), noStroke());
+  clear();
+  blendMode(ADD);
+  lights();
+  for (i = 1; i < 10; i++) {
+    rotateZ(t * 0.005);
+    D(i * 10, i * 90);
+  }
+};
