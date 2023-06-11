@@ -18,4 +18,5 @@ draw = () => {
     );
   }
 };
-// #p5js #minacoding Day 9
+// #つぶやきProcessing #p5js #minacoding Day 13: なにか新たな技術を用いてコードを書いてください。新たな関数や難しい技術などなんでも良いです。
+// #dailycodingseed blendMode()

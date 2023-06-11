@@ -24,3 +24,5 @@ draw = () => {
     drawSphere(i * 10, i * 100);
   }
 };
+
+//#つぶやきProcessing #p5js #minacoding
