@@ -1,11 +1,12 @@
 t = 0;
+s = 0.005;
 draw = () => {
   t || (createCanvas((W = 500), W), colorMode(HSB), noStroke());
-  t += 0.005;
+  t += s;
   blendMode(BLEND);
   background(0, 0.1);
   blendMode(ADD);
-  for (r = 0; r < 15; r += 0.005) {
+  for (r = 0; r < 15; r += s) {
     fill(230, 90, 50, 0.2);
     circle(
       tan(r * 2 + t) * 300 + W / 5,
@@ -16,4 +17,3 @@ draw = () => {
 };
 // #つぶやきProcessing #p5js #minacoding Day 13: なにか新たな技術を用いてコードを書いてください。新たな関数や難しい技術などなんでも良いです。
 // #dailycodingseed blendMode()
-

@@ -1,17 +1,20 @@
 t = a = b = c = d = e = 0;
 T = 300;
 w = 250;
-F = (m, n) => {
-  return m + n * noise(t / 100);
-};
+h = 100;
+F = (m, n) => m + n * noise(t / h);
 D = (i) => {
-  a = F(w, -200 * i);
-  b = F(w, -100 * i);
-  c = F(0, W);
-  d = F(w, 0);
-  e = F(w, T);
-  bezier(a, e, b, e, c, e, d, d);
-  circle(d, F(d, -100), 50);
+  bezier(
+    (a = F(w, -200 * i)),
+    (e = F(w, T)),
+    (b = F(w, -h * i)),
+    e,
+    (c = F(0, W)),
+    e,
+    (d = F(w, 0)),
+    d
+  );
+  circle(d, F(d, -h), 50);
 };
 draw = () => {
   t++ || (createCanvas((W = 500), W), noFill());
