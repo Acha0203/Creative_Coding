@@ -2,19 +2,26 @@ let m;
 t = p = 0;
 h = 500;
 r = 250;
+s = 30;
 draw = () => {
   t++ ||
     (createCanvas((w = 720), w, WEBGL),
     (m = createGraphics(h, h)),
     (T = m.text),
-    m.background(0));
-  m.textSize(35);
+    m.background(0, s));
+  m.textSize(24);
+  m.translate(0, r);
   m.fill(r);
-  m.translate(10, h / 2);
-  T('#つぶやきProcessing', -10, -10);
-  T('#minacoding', 20, 40);
+  T('#つぶやきProcessing #p5js', 0, -s);
+  T('#minacoding Day 15', r, s);
   texture(m);
-  rotateY(t * -0.01);
   noStroke();
+  rotateY(t * -0.01);
   sphere(r);
+};
+
+keyPressed = () => {
+  if (key === 's') {
+    saveGif('texts-on-sphere', 10);
+  }
 };
