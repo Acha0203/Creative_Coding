@@ -25,4 +25,4 @@ draw = () => {
   }
 };
 
-//#つぶやきProcessing #p5js #minacoding
+//#つぶやきProcessing #p5js #dailycodingseed
