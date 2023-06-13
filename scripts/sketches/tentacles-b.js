@@ -12,7 +12,7 @@ D = (n, m) => {
 };
 draw = () => {
   t++ || (createCanvas((W = 500), W, WEBGL), noStroke());
-  background(0);
+  clear();
   blendMode(ADD);
   lights();
   for (i = 1; i < 10; i++) {
