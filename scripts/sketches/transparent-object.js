@@ -14,16 +14,16 @@ draw = () => {
 
   push();
   rotateX(QUARTER_PI);
-  box(width / 3);
+  box(width / 2);
   rotateY(QUARTER_PI);
-  box(width / 3);
+  box(width / 2);
   push();
   rotateY(QUARTER_PI);
   rotateX(QUARTER_PI);
-  box(width / 3);
+  box(width / 2);
   pop();
   pop();
-  box(width / 3);
+  box(width / 2);
 };
 
 // #つぶやきProcessing #p5js #minacoding Day 14
