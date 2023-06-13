@@ -5,24 +5,25 @@ preload = () => {
 };
 draw = () => {
   t++ ||
-    (createCanvas((w = 720), w, WEBGL),
+    (createCanvas(windowWidth, windowHeight, WEBGL),
     noStroke(),
-    (H = push),
-    (P = pop),
-    (B = box),
-    (Q = QUARTER_PI));
+    blendMode(SCREEN));
   background(0);
-  blendMode(ADD);
   texture(i);
   rotateY(t * -0.01);
-  H();
-  H();
-  rotateX(Q);
-  rotateY(Q);
-  B(300);
-  P();
-  B(300);
-  P();
+
+  push();
+  rotateX(QUARTER_PI);
+  box(width / 3);
+  rotateY(QUARTER_PI);
+  box(width / 3);
+  push();
+  rotateY(QUARTER_PI);
+  rotateX(QUARTER_PI);
+  box(width / 3);
+  pop();
+  pop();
+  box(width / 3);
 };
 
 // #つぶやきProcessing #p5js #minacoding Day 14
