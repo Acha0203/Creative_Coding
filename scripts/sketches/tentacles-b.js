@@ -12,8 +12,7 @@ D = (n, m) => {
 };
 draw = () => {
   t++ || (createCanvas((W = 500), W, WEBGL), noStroke());
-  clear();
-  blendMode(ADD);
+  background(0);
   lights();
   for (i = 1; i < 10; i++) {
     rotateZ(t * 0.005);

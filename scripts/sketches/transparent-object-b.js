@@ -7,7 +7,7 @@ draw = () => {
   t++ ||
     (createCanvas((w = 720), w, WEBGL),
     noStroke(),
-    blendMode(ADD),
+    blendMode(SCREEN),
     (H = push),
     (P = pop),
     (B = box),
@@ -26,3 +26,9 @@ draw = () => {
 };
 
 // #つぶやきProcessing #p5js #minacoding Day 14
+
+keyPressed = () => {
+  if (key === 's') {
+    saveGif('transparent-object-b', 5);
+  }
+};
