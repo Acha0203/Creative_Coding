@@ -1,27 +1,28 @@
 let m;
-t = p = 0;
-h = 500;
-r = 250;
-s = 30;
+t = 0;
 draw = () => {
   t++ ||
     (createCanvas((w = 720), w, WEBGL),
-    (m = createGraphics(h, h)),
+    background(0),
+    (m = createGraphics((h = 500), h)),
     (T = m.text),
-    m.background(0, s));
-  m.textSize(24);
-  m.translate(0, r);
+    m.background(0, (s = 30)));
+  m.textSize(26);
+  m.translate(0, (r = 250));
   m.fill(r);
-  T('#つぶやきProcessing #p5js', 0, -s);
-  T('#minacoding Day 15', r, s);
+  T('#つぶやきProcessing', 0, -s);
+  T('#minacoding #p5js', r, s);
   texture(m);
   noStroke();
-  rotateY(t * -0.01);
+  rotateY(tan(t * -0.01));
   sphere(r);
 };
 
+// #minacoding Day 15 文字を使ったコードを書いてください。
+// #dailycodingseed texture()
+
 keyPressed = () => {
   if (key === 's') {
-    saveGif('texts-on-sphere', 10);
+    saveGif('texts-on-sphere', 5);
   }
 };

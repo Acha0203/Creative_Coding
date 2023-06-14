@@ -47,3 +47,5 @@ function walk(walker, i) {
   walker.x = x;
   walker.y = y;
 }
+
+// #minacoding Day 3: いつもと違う場所でコードを書いてみてください。
