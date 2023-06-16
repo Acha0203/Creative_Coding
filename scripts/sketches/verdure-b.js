@@ -17,4 +17,4 @@ draw = (_) => {
 };
 
 // #つぶやきProcessing #p5js #minacoding Day 16: 緑
-// #dailycodingseed frameCount()
+// #dailycodingseed frameCount
