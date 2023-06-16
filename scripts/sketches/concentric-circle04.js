@@ -12,6 +12,7 @@ colors = [
   '#98f5e1',
   '#b9fbc0',
 ];
+
 draw = () => {
   t++ || (createCanvas(windowWidth, windowHeight), noFill());
   background(137, 157, 255, 30);
