@@ -17,7 +17,7 @@ draw = () => {
   background(137, 157, 255, 30);
   const x = random(width);
   const y = random(height);
-  const n = random(width / 50);
+  const n = random(height / 50);
   let d = random(1, 20);
 
   for (i = 0; i < n; i++) {
