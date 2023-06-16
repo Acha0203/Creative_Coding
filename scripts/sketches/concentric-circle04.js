@@ -18,19 +18,19 @@ draw = () => {
   const x = random(width);
   const y = random(height);
   const n = random(width / 50);
-  let r = random(1, 20);
+  let d = random(1, 20);
 
   for (i = 0; i < n; i++) {
-    let s = random(1, 20);
-    arcs[i] = { x: x, y: y, r: r, s: s, c: colors[i % 10] };
-    r += s * 2;
+    const s = random(1, 20);
+    arcs[i] = { x: x, y: y, d: d, s: s, c: colors[i % 10] };
+    d += s * 2;
   }
 
   arcs.forEach((a) => {
     stroke(color(a.c));
     strokeWeight(a.s);
-    arc(a.x, a.y, a.r, a.r, random(TAU), random(TAU));
+    arc(a.x, a.y, a.d, a.d, random(TAU), random(TAU));
   });
 };
 
-// #つぶやきProcessing #p5勉強会
+// #p5勉強会
