@@ -1,8 +1,8 @@
 t = 0;
 A = [];
 draw = (_) => {
-  t++ || createCanvas((W = 500), W);
-  background(0, 10);
+  t++ || createARCanvas((W = 500), W);
+  clear();
   noFill();
   R = random;
   X = R(W);
