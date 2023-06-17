@@ -7,7 +7,7 @@ draw = (_) => {
   background(120, 100, 10, 0.1);
   blendMode(ADD);
 
-  for (let r = 0; r < TAU * n; r += 0.005) {
+  for (let r = 0; r < TAU * 5; r += 0.005) {
     const angle = r * t * 0.1;
     const p = r * r * n;
     const x = cos(angle) * p + width / 2;
