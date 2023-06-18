@@ -9,9 +9,9 @@ draw = () => {
   // translate(t % width, t % height);
   // rotate((t * TAU) / 240);
 
-  let angleA = (t * TAU) / 240;
-  let cosA = Math.cos(angleA);
-  let sinA = Math.sin(angleA);
+  const angleA = (t * TAU) / 240;
+  const cosA = Math.cos(angleA);
+  const sinA = Math.sin(angleA);
   applyMatrix(cosA, sinA, -sinA, cosA, t % width, t % height);
 
   for (let r = 0; r < TAU * 3; r += PI / 10) {
