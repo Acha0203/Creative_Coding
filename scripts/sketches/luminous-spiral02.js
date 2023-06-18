@@ -26,5 +26,4 @@ draw = () => {
   }
 };
 
-// #つぶやきProcessing #p5js #
 // #dailycodingseed ellipse()
