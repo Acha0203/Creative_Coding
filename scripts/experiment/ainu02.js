@@ -1,15 +1,13 @@
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(1020, 720);
   noStroke();
   background(0);
   fill(255);
 
-  drawSpiral(width / 2, height / 3, 1);
-  drawSpiral(width / 2, height / 3, -1);
-  drawKnot(width / 2, height / 3, 1);
-  drawKnot(width / 2, height / 3, -1);
-  drawThorn(width / 2, height / 3, 1);
-  drawThorn(width / 2, height / 3, -1);
+  drawPattern(0, height / 3);
+  drawPattern(width / 3, height / 3);
+  drawPattern((width * 2) / 3, height / 3);
+  drawPattern(width, height / 3);
 }
 
 function drawSpiral(cx, cy, direction) {
@@ -40,6 +38,15 @@ function drawThorn(cx, cy, direction) {
     const y = i + cos(r) * (height / 40) + cy - height / 256;
     circle(x, y, height / 32 - r);
   }
+}
+
+function drawPattern(x, y) {
+  drawSpiral(x, y, 1);
+  drawSpiral(x, y, -1);
+  drawKnot(x, y, 1);
+  drawKnot(x, y, -1);
+  drawThorn(x, y, 1);
+  drawThorn(x, y, -1);
 }
 
 // minacoding Day 20: テーマ「人間」3日目
