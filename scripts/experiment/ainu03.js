@@ -12,7 +12,6 @@ draw = () => {
     (R = rotateY));
   background(0);
   texture(i);
-  lights();
   R(t * -0.01);
   C(50, 280);
   push();
