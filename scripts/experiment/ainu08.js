@@ -1,8 +1,25 @@
+let layer1, layer2;
+
 function setup() {
   createCanvas(720, 720);
-  noStroke();
 
+  layer1 = createGraphics(width, height);
+  layer2 = createGraphics(width, height);
+
+  layer1.background(0, 50, 255);
+  layer2.noStroke();
   drawPattern3();
+}
+
+function draw() {
+  clear();
+  imageMode(CENTER);
+  translate(width / 2, height / 2);
+
+  drawBackground(100);
+
+  image(layer1, 0, 0);
+  image(layer2, 0, 0);
 }
 
 function drawSpiral(cx, cy, direction) {
@@ -12,7 +29,7 @@ function drawSpiral(cx, cy, direction) {
     const p = (r * height) / 100;
     const x = Math.cos(r) * p * direction + (cx - spiralCenterX);
     const y = Math.sin(r) * p + cy;
-    circle(x, y, r + height / 64);
+    layer2.circle(x, y, r + height / 64);
   }
 }
 
@@ -25,7 +42,7 @@ function drawKnot(cx, cy, direction) {
       cy +
       spiralCenterY +
       height / 520;
-    circle(x, y, r * (height / 260));
+    layer2.circle(x, y, r * (height / 260));
   }
 }
 
@@ -35,7 +52,7 @@ function drawThorn(cx, cy, direction) {
     const r = i * (PI / (height / 4));
     const x = Math.cos(r) * (height / 14) * direction + cx - startPointX;
     const y = i + Math.cos(r) * (height / 40) + cy - height / 150;
-    circle(x, y, height / 30 - r);
+    layer2.circle(x, y, height / 30 - r);
   }
 }
 
@@ -46,7 +63,7 @@ function drawLargeSpiral(cx, cy, direction) {
     const p = (r * height) / 100;
     const x = Math.cos(r) * p * direction + (cx - spiralCenterX);
     const y = Math.sin(r) * p + cy;
-    circle(x, y, r + height / 64);
+    layer2.circle(x, y, r + height / 64);
   }
 }
 
@@ -60,7 +77,7 @@ function drawKnot2(cx, cy, direction) {
       cy +
       spiralCenterY +
       height / 520;
-    circle(x, y, r * (height / 200));
+    layer2.circle(x, y, r * (height / 200));
   }
 
   spiralCenterY = Math.sin(TAU * 1.58) * TAU * 1.58 * (height / 100);
@@ -72,7 +89,7 @@ function drawKnot2(cx, cy, direction) {
       cy +
       spiralCenterY +
       height / 520;
-    circle(x, y, r * (height / 250));
+    layer2.circle(x, y, r * (height / 250));
   }
 }
 
@@ -93,23 +110,37 @@ function drawPattern2(x, y) {
 }
 
 function drawPattern3() {
-  background(0);
-  translate(width / 2, height / 2);
-  scale(0.5);
-  rotate(HALF_PI / 2);
-  fill(255);
+  layer2.background(0);
+  layer2.translate(width / 2, height / 2);
+  layer2.scale(0.5);
+  layer2.rotate(HALF_PI / 2);
+  layer2.erase(255);
 
   for (let i = 0; i < 4; i++) {
-    rotate(HALF_PI * i);
+    layer2.rotate(HALF_PI * i);
     drawPattern2(0, -300);
   }
 
-  scale(0.9);
-  rotate(HALF_PI / 2);
+  layer2.scale(0.9);
+  layer2.rotate(HALF_PI / 2);
 
   for (let i = 0; i < 4; i++) {
-    rotate(HALF_PI * i);
+    layer2.rotate(HALF_PI * i);
     drawPattern1(0, -430);
+  }
+}
+
+function drawBackground(N) {
+  layer1.colorMode(HSB);
+  layer1.noStroke();
+  const step = width / N;
+
+  for (let i = 0; i < N; i++) {
+    for (let j = 0; j < N; j++) {
+      let p = Math.sin(TAU * noise(i * 0.01, j * 0.01, frameCount * 0.04));
+      layer1.fill(210 + p * 50, N, N);
+      layer1.rect(step * i, step * j, step);
+    }
   }
 }
 // minacoding
