@@ -1,24 +1,7 @@
 function setup() {
   createCanvas(720, 720);
   noStroke();
-  background(255);
-  fill(0);
-
-  translate(width / 2, height / 2);
-
-  scale(0.7);
-  for (let i = 0; i < 4; i++) {
-    rotate(HALF_PI * i);
-    drawPattern2(0, -300);
-  }
-
-  scale(0.9);
-  rotate(HALF_PI / 2);
-
-  for (let i = 0; i < 4; i++) {
-    rotate(HALF_PI * i);
-    drawPattern1(0, -430);
-  }
+  fill(255);
 }
 
 function drawSpiral(cx, cy, direction) {
@@ -96,6 +79,32 @@ function drawPattern2(x, y) {
   drawLargeSpiral(x, y, -1);
   drawKnot2(x, y, 1);
   drawKnot2(x, y, -1);
+}
+
+function draw () {
+  background(0);
+  translate(width / 2, height / 2);
+
+  if (frameCount < 300) {
+    clear();
+    background(0);
+    scale(0.7);
+
+    for (let j = 0; j < 4; j++) {
+      rotate(HALF_PI * j);
+      drawPattern2(0, -frameCount % 300);
+    }
+  }
+
+  drawPattern2(0, -300);
+
+  // scale(0.9);
+  // rotate(HALF_PI / 2);
+
+  // for (let i = 0; i < 4; i++) {
+  //   rotate(HALF_PI * i);
+  //   drawPattern1(0, -430);
+  // }
 }
 
 // minacoding
