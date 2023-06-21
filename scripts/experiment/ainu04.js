@@ -58,4 +58,4 @@ function rotatePattern(position) {
   }
 }
 
-// minacoding Day 20: テーマ「人間」3日目
+// minacoding

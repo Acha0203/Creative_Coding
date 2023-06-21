@@ -4,12 +4,12 @@ function setup() {
   background(255);
   fill(0);
 
-  drawPattern(width / 2, height / 2);
+  drawPattern2(width / 2, height / 2);
 }
 
 function drawLargeSpiral(cx, cy, direction) {
   const spiralCenterX =
-    ((cos(TAU * 1.02) * TAU * 1.72 * height) / 100) * direction;
+    ((cos(TAU) * TAU * height) / 100 + TAU + height / 256) * direction;
   for (let r = 0; r < TAU * 1.72; r += PI / 360) {
     const p = (r * height) / 100;
     const x = cos(r) * p * direction + (cx - spiralCenterX);
@@ -18,26 +18,31 @@ function drawLargeSpiral(cx, cy, direction) {
   }
 }
 
-function drawKnot(cx, cy, direction) {
-  const spiralCenterY = sin(TAU * 1.75) * TAU * 1.75 * (height / 100);
-  for (let r = 1.5 * PI; r < TAU; r += PI / 360) {
-    const x = pow(cos(r), 3) * (height / 7) * direction + cx;
-    const y = pow(sin(r), 3) * (height / 7) + cy + spiralCenterY + height / 520;
-    circle(x, y, r * (height / 260));
+function drawKnot2(cx, cy, direction) {
+  let spiralCenterY = sin(TAU * 1.73) * TAU * 1.73 * (height / 100);
+
+  for (let r = 1.5 * PI; r < (TAU * 35) / 36; r += PI / 360) {
+    const x = pow(cos(r), 3) * (height / 10) * direction + cx;
+    const y =
+      pow(sin(r), 3) * (height / 10) + cy + spiralCenterY + height / 520;
+    circle(x, y, r * (height / 200));
+  }
+
+  spiralCenterY = sin(TAU * 1.64) * TAU * 1.64 * (height / 100);
+
+  for (let r = 0; r < HALF_PI; r += PI / 360) {
+    const x = pow(cos(r), 3) * (height / 10) * direction + cx;
+    const y =
+      pow(sin(r), 3) * (height / 10) + cy - spiralCenterY - height / 520;
+    circle(x, y, (1.5 * PI * height) / 200);
   }
 }
 
-function drawPattern(x, y) {
+function drawPattern2(x, y) {
   drawLargeSpiral(x, y, 1);
   drawLargeSpiral(x, y, -1);
-  drawKnot(x, y, 1);
-  drawKnot(x, y, -1);
+  drawKnot2(x, y, 1);
+  drawKnot2(x, y, -1);
 }
 
-// function rotatePattern(position) {
-//   for (let i = 0; i < 4; i++) {
-//     rotate(HALF_PI * i);
-//     drawPattern(0, position);
-//   }
-
-// minacoding Day 20: テーマ「人間」3日目
+// minacoding
