@@ -81,7 +81,7 @@ function drawPattern2(x, y) {
   drawKnot2(x, y, -1);
 }
 
-function draw () {
+function draw() {
   background(0);
   translate(width / 2, height / 2);
 
