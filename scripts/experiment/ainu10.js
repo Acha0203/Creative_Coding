@@ -56,7 +56,7 @@ function drawBackground(layer) {
   for (let i = 0; i < N; i++) {
     for (let j = 0; j < N; j++) {
       let p = Math.sin(TAU * noise(i * 0.01, j * 0.01, frameCount * 0.04));
-      layer.fill(210 + p * 50, N, N);
+      layer.fill(210 + p * 60, N, N);
       layer.rect(step * i, step * j, step);
     }
   }
