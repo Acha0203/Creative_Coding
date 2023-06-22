@@ -13,23 +13,24 @@ draw = () => {
     blendMode(SCREEN),
     colorMode(HSB),
     (S = sphere),
-    (R = rotateY));
+    (Y = rotateY),
+    (X = rotateX));
   background(0);
   // lights();
   texture(i);
-  R(t * -0.01);
-  S(50);
-  push();
-  R(QUARTER_PI);
+  Y(t * -0.01);
+  S(70);
+  Y(QUARTER_PI);
   S(90);
-  pop();
-  rotateX(HALF_PI);
-  S(110);
   push();
-  rotateX(HALF_PI);
-  // R(QUARTER_PI);
-  S(130);
+  Y(QUARTER_PI);
+  S(110);
   pop();
+  // push();
+  X(HALF_PI);
+  // Y(QUARTER_PI);
+  S(130);
+  // pop();
   S(150);
 };
 
