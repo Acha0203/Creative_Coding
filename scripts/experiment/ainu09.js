@@ -3,7 +3,7 @@ t = 0;
 N = 100;
 
 preload = () => {
-  i = loadImage('/assets/images/ainu-pattern-08.png');
+  i = loadImage('/assets/images/ainu-pattern-08-2.png');
 };
 
 draw = () => {
@@ -15,15 +15,21 @@ draw = () => {
     (S = sphere),
     (R = rotateY));
   background(0);
-  lights();
+  // lights();
   texture(i);
   R(t * -0.01);
   S(50);
   push();
   R(QUARTER_PI);
-  S(100);
+  S(90);
   pop();
-  R(PI);
+  rotateX(HALF_PI);
+  S(110);
+  push();
+  rotateX(HALF_PI);
+  // R(QUARTER_PI);
+  S(130);
+  pop();
   S(150);
 };
 

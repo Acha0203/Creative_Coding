@@ -4,11 +4,11 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
 
   layer1 = createGraphics(width, height);
-  layer2 = createGraphics(width * 2, height * 2);
+  layer2 = createGraphics(width, height);
 
-  layer1.background(0, 50, 255);
+  layer1.background(0);
   layer2.noStroke();
-  displayAll();
+  drawAll(layer2);
 }
 
 function draw() {
@@ -25,7 +25,8 @@ function draw() {
 }
 
 class AinuPattern {
-  constructor(cx, cy) {
+  constructor(layer, cx, cy) {
+    this.layer = layer;
     this.cx = cx;
     this.cy = cy;
   }
@@ -36,7 +37,7 @@ class AinuPattern {
       const p = (r * height) / 100;
       const x = Math.cos(r) * p * direction + (this.cx - spiralCenterX);
       const y = Math.sin(r) * p + this.cy;
-      layer2.circle(x, y, r + height / 64);
+      this.layer.circle(x, y, r + height / 64);
     }
   }
 
@@ -51,17 +52,18 @@ class AinuPattern {
         this.cy +
         spiralCenterY +
         height / 520;
-      layer2.circle(x, y, r * thickness);
+      this.layer.circle(x, y, r * thickness);
     }
   }
 
   drawThorn(direction) {
     const startPointX = Math.cos(2 * PI) * (height / 14) * direction;
+
     for (let i = 0; i < height / 2; i += 1) {
       const r = i * (PI / (height / 4));
       const x = Math.cos(r) * (height / 14) * direction + this.cx - startPointX;
       const y = i + Math.cos(r) * (height / 40) + this.cy - height / 150;
-      layer2.circle(x, y, height / 30 - r);
+      this.layer.circle(x, y, height / 30 - r);
     }
   }
 
@@ -93,26 +95,26 @@ class AinuPattern {
   }
 }
 
-function displayAll() {
-  layer2.background(0);
-  layer2.translate(width, height);
-  layer2.scale(0.5);
-  layer2.rotate(HALF_PI / 2);
-  layer2.erase(255);
+function drawAll(layer) {
+  layer.background(0);
+  layer.translate(width / 2, height / 2);
+  layer.scale(0.4);
+  layer.rotate(HALF_PI / 2);
+  layer.erase(255);
 
-  const ainuPatternA = new AinuPattern(0, -height * 0.6);
-  const ainuPatternB = new AinuPattern(0, -height * 0.4);
+  const ainuPatternA = new AinuPattern(layer, 0, -height * 0.6);
+  const ainuPatternB = new AinuPattern(layer, 0, -height * 0.4);
 
   for (let i = 0; i < 4; i++) {
-    layer2.rotate(HALF_PI * i);
+    layer.rotate(HALF_PI * i);
     ainuPatternA.drawPatternA();
   }
 
-  layer2.scale(1.1);
-  layer2.rotate(HALF_PI / 2);
+  layer.scale(1.1);
+  layer.rotate(HALF_PI / 2);
 
   for (let i = 0; i < 4; i++) {
-    layer2.rotate(HALF_PI * i);
+    layer.rotate(HALF_PI * i);
     ainuPatternB.drawPatternB();
   }
 }
