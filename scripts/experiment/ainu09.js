@@ -1,6 +1,5 @@
 let i;
 t = 0;
-N = 100;
 
 preload = () => {
   i = loadImage('/assets/images/ainu-pattern-08-2.png');
@@ -13,8 +12,7 @@ draw = () => {
     blendMode(SCREEN),
     colorMode(HSB),
     (S = sphere),
-    (Y = rotateY),
-    (X = rotateX));
+    (Y = rotateY));
   background(0);
   // lights();
   texture(i);
@@ -27,7 +25,7 @@ draw = () => {
   S(110);
   pop();
   // push();
-  X(HALF_PI);
+  rotateX(HALF_PI);
   // Y(QUARTER_PI);
   S(130);
   // pop();
