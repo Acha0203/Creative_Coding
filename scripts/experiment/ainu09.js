@@ -1,10 +1,8 @@
 let i;
 t = 0;
-
 preload = () => {
   i = loadImage('/assets/images/ainu-pattern-08-2.png');
 };
-
 draw = () => {
   t++ ||
     (createCanvas((w = 720), w, WEBGL),
@@ -14,22 +12,16 @@ draw = () => {
     (S = sphere),
     (Y = rotateY));
   background(0);
-  // lights();
   texture(i);
-  Y(t * -0.01);
-  S(70);
-  Y(QUARTER_PI);
-  S(90);
+  Y(t * 0.01);
+  S(110);
   push();
   Y(QUARTER_PI);
-  S(110);
+  S(140);
   pop();
-  // push();
   rotateX(HALF_PI);
-  // Y(QUARTER_PI);
-  S(130);
-  // pop();
-  S(150);
+  S(170);
+  S(200);
 };
 
-// #つぶやきProcessing #p5js #minacoding Day 23
+// #つぶやきProcessing #p5js #minacoding Day 23: テーマ「人間」の6日目
