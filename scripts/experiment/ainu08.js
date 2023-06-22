@@ -1,10 +1,10 @@
 let layer1, layer2;
 
 function setup() {
-  createCanvas(720, 720);
+  createCanvas(windowWidth, windowHeight);
 
   layer1 = createGraphics(width, height);
-  layer2 = createGraphics(width, height);
+  layer2 = createGraphics(width * 2, height * 2);
 
   layer1.background(0, 50, 255);
   layer2.noStroke();
@@ -13,13 +13,18 @@ function setup() {
 
 function draw() {
   clear();
-  imageMode(CENTER);
-  translate(width / 2, height / 2);
 
   drawBackground(100);
 
   image(layer1, 0, 0);
+
+  push();
+  imageMode(CENTER);
+  translate(width / 2, height / 2);
+  // rotate(frameCount * 0.005);
+  // scale(frameCount * 0.005);
   image(layer2, 0, 0);
+  pop();
 }
 
 function drawSpiral(cx, cy, direction) {
@@ -77,7 +82,7 @@ function drawKnot2(cx, cy, direction) {
       cy +
       spiralCenterY +
       height / 520;
-    layer2.circle(x, y, r * (height / 200));
+    layer2.circle(x, y, r * (height / 220));
   }
 
   spiralCenterY = Math.sin(TAU * 1.58) * TAU * 1.58 * (height / 100);
@@ -111,14 +116,14 @@ function drawPattern2(x, y) {
 
 function drawPattern3() {
   layer2.background(0);
-  layer2.translate(width / 2, height / 2);
+  layer2.translate(width, height);
   layer2.scale(0.5);
   layer2.rotate(HALF_PI / 2);
   layer2.erase(255);
 
   for (let i = 0; i < 4; i++) {
     layer2.rotate(HALF_PI * i);
-    drawPattern2(0, -300);
+    drawPattern2(0, -height * 0.4);
   }
 
   layer2.scale(0.9);
@@ -126,7 +131,7 @@ function drawPattern3() {
 
   for (let i = 0; i < 4; i++) {
     layer2.rotate(HALF_PI * i);
-    drawPattern1(0, -430);
+    drawPattern1(0, -height * 0.6);
   }
 }
 
