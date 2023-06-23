@@ -32,19 +32,19 @@ function drawAinuSphere(layer) {
 
   layer.push();
   layer.rotateY(frameCount * 0.02);
-  layer.sphere(height / 6);
+  layer.sphere(height / 12);
   layer.rotateY(frameCount * 0.02);
-  layer.sphere((height * 5) / 24);
+  layer.sphere(height / 8);
   layer.pop();
   layer.push();
   layer.rotateY(frameCount * 0.02);
-  layer.sphere(height / 4);
+  layer.sphere(height / 6);
   layer.pop();
   layer.push();
   layer.rotateX(frameCount * 0.02);
-  layer.sphere((height * 7) / 24);
+  layer.sphere((height * 5) / 24);
   layer.rotateY(frameCount * -0.02);
-  layer.sphere(height / 3);
+  layer.sphere(height / 4);
   layer.pop();
 }
 

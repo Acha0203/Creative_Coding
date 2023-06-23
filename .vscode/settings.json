@@ -1,3 +1,4 @@
 {
-  "workbench.settings.openDefaultSettings": false
+  "workbench.settings.openDefaultSettings": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
 }
