@@ -15,7 +15,7 @@ function draw() {
   clear();
   blendMode(MULTIPLY);
 
-  drawBackground(layer1);
+  drawBackground(layer1, N);
   drawAinuSphere(layer2);
 
   image(layer1, 0, 0);
@@ -48,15 +48,15 @@ function drawAinuSphere(layer) {
   layer.pop();
 }
 
-function drawBackground(layer) {
+function drawBackground(layer, n) {
   layer.colorMode(HSB);
   layer.noStroke();
-  const step = width / N;
+  const step = width / n;
 
-  for (let i = 0; i < N; i++) {
-    for (let j = 0; j < N; j++) {
+  for (let i = 0; i < n; i++) {
+    for (let j = 0; j < n; j++) {
       let p = Math.sin(TAU * noise(i * 0.01, j * 0.01, frameCount * 0.04));
-      layer.fill(210 + p * 60, N, N);
+      layer.fill(210 + p * 60, n, n);
       layer.rect(step * i, step * j, step);
     }
   }
