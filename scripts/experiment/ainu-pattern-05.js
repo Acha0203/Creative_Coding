@@ -2,7 +2,7 @@ let img, layer1, layer2;
 N = 100;
 
 function preload() {
-  img = loadImage('/assets/images/ainu-pattern-08-3.png');
+  img = loadImage('/assets/images/ainu-pattern-03-m3.png');
 }
 function setup() {
   createCanvas(windowWidth, windowHeight);

@@ -1,7 +1,7 @@
 let i;
 t = 0;
 preload = () => {
-  i = loadImage('/assets/images/ainu-pattern-08-2.png');
+  i = loadImage('/assets/images/ainu-pattern-03-m2.png');
 };
 draw = () => {
   t++ ||
