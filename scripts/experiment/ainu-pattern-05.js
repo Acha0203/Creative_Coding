@@ -16,7 +16,7 @@ function setup() {
 function draw() {
   clear();
 
-  drawBackground(100);
+  drawBackground(layer1, 100);
   image(layer1, 0, 0);
 
   push();
@@ -111,7 +111,7 @@ function drawAll(layer) {
   layer.scale(0.4);
   layer.rotate(frameCount * 0.03);
 
-  layer.scale(0.4 + (frameCount % 52) * 0.03);
+  layer.scale(0.4 + (frameCount % 60) * 0.03);
 
   for (let i = 0; i < 4; i++) {
     layer.rotate(HALF_PI * i);
@@ -124,7 +124,7 @@ function drawAll(layer) {
   layer.scale(0.46);
   layer.rotate(HALF_PI / 2 + frameCount * 0.03);
 
-  layer.scale(0.4 + (frameCount % 52) * 0.03);
+  layer.scale(0.4 + (frameCount % 60) * 0.03);
 
   for (let i = 0; i < 4; i++) {
     layer.rotate(HALF_PI * i);
@@ -133,19 +133,19 @@ function drawAll(layer) {
   layer.pop();
 }
 
-function drawBackground(n) {
-  layer1.colorMode(HSB);
-  layer1.noStroke();
+function drawBackground(layer, n) {
+  layer.colorMode(HSB);
+  layer.noStroke();
   const step = width / n;
   const m = height / step;
 
   for (let i = 0; i < n; i++) {
     for (let j = 0; j < m; j++) {
       let p = Math.sin(TAU * noise(i * 0.01, j * 0.01, frameCount * 0.04));
-      layer1.fill(210 + p * 50, n, n);
-      layer1.rect(step * i, (height / m) * j, step);
+      layer.fill(210 + p * 60, 100, 100);
+      layer.rect(step * i, (height / m) * j, step);
     }
   }
 }
 
-// minacoding Day 22: テーマ「人間」5日目
+// minacoding Day 24: テーマ「人間」7日目
