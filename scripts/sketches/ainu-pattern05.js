@@ -16,7 +16,7 @@ function setup() {
 function draw() {
   clear();
 
-  drawBackground(layer1, 100);
+  drawBackground(layer1, 50);
   image(layer1, 0, 0);
 
   push();
@@ -154,7 +154,7 @@ function drawBackground(layer, n) {
     for (let j = 0; j < m; j++) {
       let p = Math.sin(TAU * noise(i * 0.01, j * 0.01, frameCount * 0.04));
       layer.fill(210 + p * 60, 100, 100);
-      layer.rect(step * i, (height / m) * j, step);
+      layer.square(step * i, (height / m) * j, step + 2);
     }
   }
 }

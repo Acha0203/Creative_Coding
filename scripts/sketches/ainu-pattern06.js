@@ -1,5 +1,4 @@
 let img, layer1, layer2;
-N = 100;
 
 function preload() {
   img = loadImage('/assets/images/ainu-pattern-03-m3.png');
@@ -15,7 +14,7 @@ function draw() {
   clear();
   blendMode(MULTIPLY);
 
-  drawBackground(layer1, N);
+  drawBackground(layer1, 50);
   drawAinuSphere(layer2);
 
   image(layer1, 0, 0);
@@ -57,7 +56,7 @@ function drawBackground(layer, n) {
     for (let j = 0; j < m; j++) {
       let p = Math.sin(TAU * noise(i * 0.01, j * 0.01, frameCount * 0.04));
       layer.fill(210 + p * 60, 100, 100);
-      layer.rect(step * i, (height / m) * j, step);
+      layer.square(step * i, (height / m) * j, step + 2);
     }
   }
 }
