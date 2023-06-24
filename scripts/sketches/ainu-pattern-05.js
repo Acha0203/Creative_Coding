@@ -1,6 +1,6 @@
 p5.disableFriendlyErrors = true;
 
-let layer1, layer2;
+let layer1, layer2, ainuPatternA, ainuPatternB;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -72,30 +72,41 @@ class AinuPattern {
   }
 
   drawPatternA() {
-    const r = TAU * 2.02;
-    this.drawSpiral((Math.cos(r) * r * height) / 100, r, 1);
-    this.drawSpiral((Math.cos(r) * r * height) / 100, r, -1);
-    this.drawKnot(height / 7, height / 260, TAU * 1.75, TAU, 1);
-    this.drawKnot(height / 7, height / 260, TAU * 1.75, TAU, -1);
+    const maxRadian = TAU * 2.02;
+    const centerX = (Math.cos(maxRadian) * maxRadian * height) / 100;
+    const size = height / 7;
+    const thickness = height / 260;
+    const spiralRadian = TAU * 1.75;
+
+    this.drawSpiral(centerX, maxRadian, 1);
+    this.drawSpiral(centerX, maxRadian, -1);
+    this.drawKnot(size, thickness, spiralRadian, TAU, 1);
+    this.drawKnot(size, thickness, spiralRadian, TAU, -1);
     this.drawThorn(1);
     this.drawThorn(-1);
   }
 
   drawPatternB() {
-    this.drawSpiral(
-      (Math.cos(TAU) * TAU * height) / 100 + TAU + height / 256,
-      TAU * 1.72,
-      1
-    );
-    this.drawSpiral(
-      (Math.cos(TAU) * TAU * height) / 100 + TAU + height / 256,
-      TAU * 1.72,
-      -1
-    );
-    this.drawKnot(height / 10, height / 220, TAU * 1.73, (TAU * 35) / 36, 1);
-    this.drawKnot(height / 10, height / 220, TAU * 1.73, (TAU * 35) / 36, -1);
-    this.drawKnot(height / 20, height / 250, TAU * 1.58, (TAU * 35) / 36, 1);
-    this.drawKnot(height / 20, height / 250, TAU * 1.58, (TAU * 35) / 36, -1);
+    const centerX = (Math.cos(TAU) * TAU * height) / 100 + TAU + height / 256;
+    let maxRadian = TAU * 1.72;
+
+    this.drawSpiral(centerX, maxRadian, 1);
+    this.drawSpiral(centerX, maxRadian, -1);
+
+    let size = height / 10;
+    let thickness = height / 220;
+    let spiralRadian = TAU * 1.73;
+    maxRadian = (TAU * 35) / 36;
+
+    this.drawKnot(size, thickness, spiralRadian, maxRadian, 1);
+    this.drawKnot(size, thickness, spiralRadian, maxRadian, -1);
+
+    size = height / 20;
+    thickness = height / 250;
+    spiralRadian = TAU * 1.58;
+
+    this.drawKnot(size, thickness, spiralRadian, maxRadian, 1);
+    this.drawKnot(size, thickness, spiralRadian, maxRadian, -1);
   }
 }
 

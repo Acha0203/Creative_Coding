@@ -27,7 +27,6 @@ function drawAinuSphere(layer) {
   layer.background(0);
   layer.blendMode(SCREEN);
   layer.noStroke();
-  layer.lights();
   layer.texture(img);
 
   layer.push();
@@ -63,4 +62,11 @@ function drawBackground(layer, n) {
   }
 }
 
-// #つぶやきProcessing #p5js #minacoding Day 24
+// #minacoding Day 24: テーマ「人間」7日目
+// #dailycodingseed colorMode()
+
+keyPressed = () => {
+  if (key === 's') {
+    saveGif('ainu-pattern-06', 7);
+  }
+};
