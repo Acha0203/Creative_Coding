@@ -12,12 +12,12 @@ draw = () => {
 
   x = R(w);
   y = R(w);
-  n = R(10, 100);
+  n = R(10, 90);
   d = R(10, 200);
 
   for (i = 0; i < n; i++) {
     translate(x, y);
-    stroke(150 + i / 2, w, i);
+    stroke(i / 2, w, i * 2);
     rotate((PI / 30) * i * t);
     square(0, 0, d);
     resetMatrix();
