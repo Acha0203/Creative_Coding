@@ -17,7 +17,7 @@ draw = () => {
 
   for (i = 0; i < n; i++) {
     translate(x, y);
-    stroke(150 + i * 2, w, i * 10);
+    stroke(150 + i * 2, w, i * 5);
     rotate((PI / 30) * i * t);
     square(0, 0, d);
     resetMatrix();
