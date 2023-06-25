@@ -1,20 +1,27 @@
 t = 0;
-A = [];
-draw = (_) => {
-  t++ || createCanvas((W = 500), W);
-  background(0, 10);
-  noFill();
-  R = random;
-  X = R(W);
-  Y = R(W);
-  for (i = 0; i < R(W); i++) {
-    A[i] = { x: X, y: Y, d: i + (t % 10) };
+arcs = [];
+
+draw = () => {
+  t++ || (createCanvas((w = 500), w), noFill(), (R = random));
+  background(0, 20);
+  x = R(w);
+  y = R(w);
+  n = R(10);
+  d = 2;
+
+  for (i = 0; i < n; i++) {
+    s = R(1, 20);
+    arcs[i] = { x: x, y: y, d: d, s: s };
+    d += s * 2;
   }
-  A.forEach((e) => {
-    stroke(R(W));
-    strokeWeight(R(1, 8));
-    arc(e.x, e.y, e.d, e.d, R(TAU), R(TAU));
+
+  arcs.forEach((a) => {
+    stroke(0, 90, R(90));
+    strokeWeight(a.s);
+    arc(a.x, a.y, a.d, a.d, R(TAU), R(TAU));
   });
 };
 
-// #つぶやきProcessing #p5勉強会
+// #つぶやきProcessing #p5js #p5勉強会
+// #minacoding Day 26: random
+// #dailycodingseed arc()
