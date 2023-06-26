@@ -27,3 +27,9 @@ draw = () => {
 // #つぶやきProcessing #p5js
 // #minacoding Day 26: randomを使って作品を作ってください。
 // #dailycodingseed rectMode()
+
+keyPressed = () => {
+  if (key === 's') {
+    saveGif('random-squares', 5);
+  }
+};
