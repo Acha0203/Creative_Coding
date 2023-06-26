@@ -26,4 +26,10 @@ R = (x, y, z) => {
   f = d * S(0) + c * C(0);
 };
 
-// #p5js #minacoding Day 27: 3D
+// #p5js #minacoding Day 27: 3Dなコードを書いてください。3Dに見える作品でも構いません。
+
+keyPressed = () => {
+  if (key === 's') {
+    saveGif('sombrero', 5);
+  }
+};
