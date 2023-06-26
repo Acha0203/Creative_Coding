@@ -1,5 +1,3 @@
-let c1, c2;
-
 function setup() {
   createCanvas(windowWidth, windowHeight);
   colorMode(HSL);
@@ -10,7 +8,6 @@ function draw() {
   background(0, 0.1);
 
   for (let i = 0; i < 10; i++) {
-
     const fn = (m, n) => {
       return m * noise(frameCount / 100, n + i);
     };
@@ -26,8 +23,8 @@ function draw() {
 
     const steps = 20;
 
-    for (let j = 0; j <= steps; j++) {
-      fill(160 + j * 5, 90, 60);
+    for (let j = 1; j <= steps; j++) {
+      fill(map(frameCount % 360, 0, 360, -100, 260) + j * 5, 90, 60);
       const p = j / steps;
       const x = bezierPoint(x1, x2, x3, x4, p);
       const y = bezierPoint(y1, y2, y3, y4, p);
@@ -35,3 +32,5 @@ function draw() {
     }
   }
 }
+
+// #dailycodingseed bezierPoint()
