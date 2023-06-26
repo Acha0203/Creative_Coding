@@ -2,17 +2,14 @@ let c1, c2;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  colorMode(HSL, 1);
-  c1 = color(0.1, 1, 1);
-  c2 = color(0.9, 1, 0.05);
-  noFill();
+  colorMode(HSL);
+  noStroke();
 }
 
 function draw() {
-  background(0, 0.05);
+  background(0, 0.1);
 
   for (let i = 0; i < 10; i++) {
-    stroke(lerpColor(c1, c2, noise(frameCount / 100, i)));
 
     const fn = (m, n) => {
       return m * noise(frameCount / 100, n + i);
@@ -27,6 +24,14 @@ function draw() {
     const y3 = fn(height, 60);
     const y4 = fn(height, 70);
 
-    bezier(x1, y1, x2, y2, x3, y3, x4, y4);
+    const steps = 20;
+
+    for (let j = 0; j <= steps; j++) {
+      fill(160 + j * 5, 90, 60);
+      const p = j / steps;
+      const x = bezierPoint(x1, x2, x3, x4, p);
+      const y = bezierPoint(y1, y2, y3, y4, p);
+      circle(x, y, j);
+    }
   }
 }
