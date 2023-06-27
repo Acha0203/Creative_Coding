@@ -24,7 +24,12 @@ function draw() {
     const steps = 20;
 
     for (let j = 1; j <= steps; j++) {
-      fill(map(frameCount % 360, 0, 360, -100, 260) + j * 5, 90, 60);
+      fill(
+        map(frameCount % 360, 0, 360, -150, 210) + (j + i) * 5,
+        90,
+        60,
+        0.05 * j
+      );
       const p = j / steps;
       const x = bezierPoint(x1, x2, x3, x4, p);
       const y = bezierPoint(y1, y2, y3, y4, p);

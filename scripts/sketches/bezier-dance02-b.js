@@ -17,3 +17,9 @@ draw = () => {
 
 // #つぶやきProcessing #p5js
 // #dailycodingseed bezierPoint()
+
+keyPressed = () => {
+  if (key === 's') {
+    saveGif('bezier-dance-b', 5);
+  }
+};
