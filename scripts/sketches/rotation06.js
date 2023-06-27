@@ -1,4 +1,3 @@
-const s = 0.93;
 let t = 0;
 
 function setup() {
@@ -15,7 +14,7 @@ function draw() {
 
   for (let d = 0; d < 360; d += 9) {
     let radian = d + frameCount / width;
-    scale(s);
+    scale(0.93);
     rotate(t);
     const x = cos(radian) * radius;
     const y = sin(radian) * radius;
