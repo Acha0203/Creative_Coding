@@ -13,3 +13,5 @@ draw = (_) => {
           (sin((T / 90) * PI) * d) / 15
         );
 };
+
+// https://twitter.com/Hau_kun/status/1667172150111883265?s=20
