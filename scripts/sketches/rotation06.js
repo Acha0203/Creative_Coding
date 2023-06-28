@@ -19,7 +19,7 @@ function draw() {
     const x = cos(radian) * radius;
     const y = sin(radian) * radius;
     let size = sin(frameCount / 30 - d * 9) ** 10 * d;
-    fill((frameCount + d) % 360, 99, 99);
+    fill((frameCount + d) % 360, 100, 100);
     circle(x, y, size);
   }
 
