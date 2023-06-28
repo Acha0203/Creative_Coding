@@ -13,3 +13,13 @@ draw = (_) => {
 
   a += 0.005;
 };
+
+// #つぶやきProcessing #p5js
+// #minacoding Day 29: 1年前に作った作品を紹介してください。そして少し変えてリニューアルしてみましょう。
+
+
+keyPressed = () => {
+  if (key === 's') {
+    saveGif('rotation-06-b', 5);
+  }
+};
