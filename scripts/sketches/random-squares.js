@@ -13,8 +13,8 @@ draw = () => {
 
   x = random(width);
   y = random(height);
-  n = random(10, 30);
   d = random(10, height / 3);
+  n = random(10, d / 10);
 
   for (w = 10; w > 0; w--) {
     for (i = 1; i <= n; i++) {
