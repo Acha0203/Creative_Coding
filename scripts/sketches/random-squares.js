@@ -2,34 +2,31 @@ t = 0;
 
 draw = () => {
   t++ ||
-    (createCanvas((w = 500), w),
+    (createCanvas(windowWidth, windowHeight),
     noFill(),
     rectMode(CENTER),
-    colorMode(HSB),
-    (R = random));
+    colorMode(HSB));
 
+  blendMode(BLEND);
   background(0, 0.05);
+  blendMode(ADD);
 
-  x = R(w);
-  y = R(w);
-  n = R(10, 90);
-  d = R(10, 200);
+  x = random(width);
+  y = random(height);
+  n = random(10, 30);
+  d = random(10, height / 3);
 
-  for (i = 0; i < n; i++) {
-    translate(x, y);
-    stroke(i / 2, w, i * 2);
-    rotate((PI / 30) * i * t);
-    square(0, 0, d);
-    resetMatrix();
+  for (w = 10; w > 0; w--) {
+    for (i = 1; i <= n; i++) {
+      translate(x, y);
+      strokeWeight(w);
+      stroke((t % 270) + i * 3, 50, 1);
+      rotate((TAU / n) * i);
+      square(0, 0, d);
+      resetMatrix();
+    }
   }
 };
 
-// #つぶやきProcessing #p5js
 // #minacoding Day 26: randomを使って作品を作ってください。
 // #dailycodingseed rectMode()
-
-keyPressed = () => {
-  if (key === 's') {
-    saveGif('random-squares', 5);
-  }
-};
