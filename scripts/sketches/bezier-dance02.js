@@ -8,9 +8,7 @@ function draw() {
   background(0, 0.1);
 
   for (let i = 0; i < 10; i++) {
-    const fn = (m, n) => {
-      return m * noise(frameCount / 100, n + i);
-    };
+    fn = (m, n) => m * noise(frameCount / 100, n + i);
 
     const x1 = fn(width, 0);
     const x2 = fn(width, 10);

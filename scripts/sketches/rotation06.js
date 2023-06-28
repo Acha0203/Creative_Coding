@@ -13,12 +13,12 @@ function draw() {
   translate(width / 2, height / 2);
 
   for (let d = 0; d < 360; d += 9) {
-    let radian = d + frameCount / width;
+    const radian = d + frameCount / width;
     scale(0.93);
     rotate(t);
     const x = cos(radian) * radius;
     const y = sin(radian) * radius;
-    let size = sin(frameCount / 30 - d * 9) ** 10 * d;
+    const size = sin(frameCount / 30 - d * 9) ** 10 * d;
     fill((frameCount + d) % 360, 100, 100);
     circle(x, y, size);
   }
