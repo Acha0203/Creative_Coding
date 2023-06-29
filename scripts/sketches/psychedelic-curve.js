@@ -29,3 +29,4 @@ function draw() {
   }
   r += 0.002;
 }
+// #p5js #dailycodingseed: curve()
