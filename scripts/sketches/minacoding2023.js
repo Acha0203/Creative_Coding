@@ -1,5 +1,5 @@
 const txt1 = 'minacoding2023';
-const txt2 = 'Thank you!';
+const txt2 = 'Completed!';
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -10,8 +10,8 @@ function setup() {
 function draw() {
   background(0, 0.05);
 
-  display(txt1, width / 3, width / 10, 0);
-  display(txt2, width / 5, width / 14, 180);
+  display(txt1, width / 3, width / 12, 0);
+  display(txt2, width / 6, width / 16, 180);
 }
 
 function display(txt, radius, tSize, startHue) {
