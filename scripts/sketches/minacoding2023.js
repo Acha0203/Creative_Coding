@@ -10,8 +10,8 @@ function setup() {
 function draw() {
   background(0, 0.05);
 
-  display(txt1, width / 3, width / 12, 0);
-  display(txt2, width / 6, width / 16, 180);
+  display(txt1, height / 3, height / 12, 0);
+  display(txt2, height / 6, height / 16, 180);
 }
 
 function display(txt, radius, tSize, startHue) {
