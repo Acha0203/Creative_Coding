@@ -3,7 +3,7 @@ const txt2 = 'Thank you!';
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  colorMode(HSB);
+  colorMode(HSL);
   noStroke();
 }
 
@@ -23,7 +23,7 @@ function display(txt, radius, tSize, startHue) {
     textSize(tSize);
     translate(x, y);
     rotate(step * i + HALF_PI + tan(frameCount / 99));
-    fill((startHue + frameCount + i * (360 / txt.length)) % 360, 100, 100);
+    fill((startHue + frameCount + i * (360 / txt.length)) % 360, 100, 80);
     text(txt[i], 0, 0);
     pop();
   }
