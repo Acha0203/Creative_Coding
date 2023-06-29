@@ -20,3 +20,5 @@ draw = () => {
     circle(x, y, 20);
   }
 };
+
+// #つぶやきProcessing #p5js #minacoding Day 7: 「時間」をテーマにコードを書いてください。
