@@ -88,7 +88,7 @@ class Fireworks {
       this.fireworks.push(
         new Firework(
           createVector(random(width), random(height)),
-          random(90, 500)
+          random(width / 10, width / 2)
         )
       )
 
