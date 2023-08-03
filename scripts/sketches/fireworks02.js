@@ -31,12 +31,14 @@ class Particle {
     this.update()
     this.display()
   }
+
   // Method to update position
   update() {
     this.velocity.add(this.acceleration)
     this.position.add(this.velocity)
     this.lifespan -= 2
   }
+
   // Method to display
   display() {
     fill((frameCount + this.size) % 360, 90, this.lifespan, this.lifespan)
@@ -46,6 +48,7 @@ class Particle {
       random(this.size - this.lifespan) / 50
     )
   }
+
   // Is the particle still useful?
   isDead() {
     return this.lifespan < 0
