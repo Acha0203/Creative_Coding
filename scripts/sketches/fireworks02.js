@@ -1,22 +1,3 @@
-function setup() {
-  createCanvas(windowWidth, windowHeight)
-  colorMode(HSB)
-  noStroke()
-
-  system = new Fireworks()
-  system.initFireworks()
-}
-
-function draw() {
-  background(0, 0.05)
-
-  for (let i = 0; i < system.fireworks.length; i++) {
-    system.fireworks[i].run()
-  }
-
-  if (frameCount % 250 <= 0) system.initFireworks()
-}
-
 // A simple Particle class
 class Particle {
   constructor(position, x, y, size) {
@@ -82,18 +63,40 @@ class Fireworks {
   }
 
   initFireworks() {
+    const MAX_NUMBER = random(10, 20)
     this.fireworks = []
 
-    for (let i = 0; i < width / 70; i++) {
+    for (let i = 0; i < MAX_NUMBER; i++) {
       this.fireworks.push(
         new Firework(
           createVector(random(width), random(height)),
-          random(width / 10, width / 2)
+          random(height / 10, height / 2)
         )
       )
 
       this.fireworks[i].addParticle()
-      console.log(this.fireworks[i])
     }
   }
+}
+
+let system = new Fireworks()
+
+function setup() {
+  createCanvas(windowWidth, windowHeight)
+  colorMode(HSB)
+  noStroke()
+
+  system = new Fireworks()
+  system.initFireworks()
+}
+
+function draw() {
+  const AVERAGE_LIFE = height / 6
+  background(0, 0.05)
+
+  for (let i = 0; i < system.fireworks.length; i++) {
+    system.fireworks[i].run()
+  }
+
+  if (frameCount % AVERAGE_LIFE <= 0) system.initFireworks()
 }
