@@ -91,7 +91,7 @@ function setup() {
 }
 
 function draw() {
-  const AVERAGE_LIFE = height / 6
+  const AVERAGE_LIFE = 250
   background(0, 0.05)
 
   for (let i = 0; i < system.fireworks.length; i++) {
