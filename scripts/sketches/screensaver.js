@@ -1,18 +1,26 @@
-t = 0
-draw = () => {
-  t || (createCanvas((W = 720), W), colorMode(HSB), noStroke(), (B = blendMode))
+let t = 0
+
+function setup() {
+  createCanvas(windowWidth, windowHeight)
+  colorMode(HSB)
+  noStroke()
+}
+
+function draw() {
   t += 0.5
-  B(BLEND)
+  blendMode(BLEND)
   background(0, 0.5)
-  B(ADD)
-  for (y = 0; y <= W; y += 9) {
-    for (x = 0; x <= W; x += 9)
+  blendMode(ADD)
+  for (y = 0; y <= height; y += 9) {
+    for (x = 0; x <= width; x += 9) {
       fill(
-        (H = (noise(x, y, t) * W) % 270),
+        (H = (noise(x, y, t) * width) % 270),
         H - 80,
         H,
-        (T = tan(noise(x / W, y / W) * 99 + t))
-      ) + circle(x, y, 5 / T)
+        (T = tan(noise(x / width, y / height) * 99 + t))
+      )
+      circle(x, y, 5 / T)
+    }
   }
 }
 
