@@ -1,5 +1,5 @@
 function setup() {
-  createCanvas((W = windowWidth), W);
+  createCanvas((H = windowHeight), H);
   colorMode(HSB);
   noStroke();
 }

@@ -21,8 +21,6 @@ function draw() {
   translate(width / 2, height / 2);
   stroke(0, 0, millis() % 100);
 
-  // ここがバラ曲線の数式
-  // radius をかけてあげないとかなり小さな絵になってしまう
   range = radius * sin(angle * (n / d));
   bx = x;
   by = y;
