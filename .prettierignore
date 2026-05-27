@@ -1,0 +1,9 @@
+node_modules/
+.next/
+.nuxt/
+build/
+dist/
+out/
+public/**
+!public/**/*.json
+package-lock.json
