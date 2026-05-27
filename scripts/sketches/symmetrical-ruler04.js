@@ -11,13 +11,13 @@ function draw() {
 
   let direction = 5; // どちらの方向に動くかのフラグ
 
-  for (let r = 0; r < TAU; r += PI / 4) {
+  for (let r = 0; r < TAU; r += PI / 8) {
     let angle = r + (cos(frameCount / 50) / 3) * direction;
     let length = noise(frameCount / 90) * 360;
     let x = tan(cos(angle)) * length + width / 2;
     let y = tan(sin(angle)) * length + height / 2;
     fill(color((frameCount % 360) * r * 0.1, 80 + r, r));
-    circle(x, y, frameCount % 360);
+    circle(x, y, length);
     direction = -direction; // 動く方向を反転する
   }
 }
