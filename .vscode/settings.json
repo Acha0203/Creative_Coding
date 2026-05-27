@@ -4,5 +4,5 @@
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "cSpell.words": ["genuary", "millis", "nuxt"]
+  "cSpell.words": ["dailycodingseed", "genuary", "millis", "minacoding", "nuxt"]
 }
