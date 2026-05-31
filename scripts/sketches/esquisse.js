@@ -17,7 +17,7 @@ function draw() {
       let y = (50 * sin(q * PI)) / q;
       let ya = y * cos(angle1) - z * sin(angle1);
       let xa = x * cos(angle2) - (y * sin(angle1) + z * cos(angle1)) * sin(angle2);
-      point(width / 2 + xa * cos(0) - ya * sin(0), width / 4 + xa * sin(0) + ya * cos(0));
+      point(width / 2 + xa * cos(0) - ya * sin(0), height / 2 + xa * sin(0) + ya * cos(0));
     }
   }
 }
