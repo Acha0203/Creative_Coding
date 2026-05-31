@@ -16,3 +16,6 @@ draw = _ => {
     d = -d
   }
 }
+
+// #つぶやきProcessing #p5js
+// #minacoding 2026 June 1st, Circle
