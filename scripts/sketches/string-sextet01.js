@@ -14,11 +14,13 @@ function draw() {
   while (i < 7) {
     let n = i * i + 7;
     let m = hz / i;
+
     for (let r = 0; r < TAU; r += PI / n) {
       let angle = r + noise(frameCount / m) * n * direction;
       let length = noise(frameCount / 50) * m;
       let x = tan(cos(angle)) * length + width / 2;
       let y = tan(sin(angle)) * length + height / 2;
+
       fill(frameCount % (hz / 2), 50, hz);
       circle(x, y, length / 20);
       direction = -direction;
