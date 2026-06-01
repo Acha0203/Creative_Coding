@@ -1,31 +1,35 @@
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  colorMode(RGB);
-  noFill();
+  colorMode(HSB);
+  noStroke();
 }
 
 function draw() {
-  clear();
-  stroke(0, frameCount % 255, 255);
+  background(0, 0.1);
 
-  let angle1 = frameCount * 0.1;
-  let angle2 = frameCount * 0.2;
+  let direction = 1;
+  let i = 1;
+  let hz = 660;
 
-  for (let z = 240; z > -240; z -= 2) {
-    for (let x = -240; x < 240; x += 2) {
-      let q = sqrt(x * x + z * z) / 60;
-      let y = (50 * sin(q * PI)) / q;
-      let ya = y * cos(angle1) - z * sin(angle1);
-      let xa = x * cos(angle2) - (y * sin(angle1) + z * cos(angle1)) * sin(angle2);
-      point(width / 2 + xa * cos(0) - ya * sin(0), height / 2 + xa * sin(0) + ya * cos(0));
+  while (i < 7) {
+    let n = i * i + 7;
+
+    hz = hz / 2;
+
+    for (let r = 0; r < TAU; r += PI / n) {
+      let angle = r + noise(frameCount / hz) * n * direction;
+      let length = noise(frameCount / 50) * hz;
+      let x = tan(cos(angle)) * length + width / 2;
+      let y = tan(sin(angle)) * length + height / 2;
+
+      fill(frameCount % hz, 50, hz);
+      circle(x, y, length / 20);
+      direction = -direction;
     }
+    i++;
   }
 }
 
-// #p5js #minacoding Day 27: 3Dなコードを書いてください。3Dに見える作品でも構いません。
-
-keyPressed = () => {
-  if (key === 's') {
-    saveGif('sombrero', 5);
-  }
-};
+// #minacoding 2026 June 2nd, Music
+// Coded while listening to the string Sextet by Brahms.
+// 'hz' is the frequency of the E string of a stringed instrument.
