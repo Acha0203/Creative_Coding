@@ -5,14 +5,14 @@ background(0,.1)
 i=1
 h=W
 while(i<7){n=i*i+7
-h=h/2
 for(r=0;r<TAU;r+=PI/n){a=r+noise(t/h)*n*d
 l=noise(t/50)*h
 x=tan(cos(a))*l+w
 y=tan(sin(a))*l+w
 fill(t%h,50,h)
 circle(x,y,l/20)
-d=-d}i++}}
+d=-d}h=h/2
+i++}}
 
 // #つぶやきProcessing #p5js
 // #minacoding 2026 June 2nd, Music

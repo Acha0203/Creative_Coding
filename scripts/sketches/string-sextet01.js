@@ -14,8 +14,6 @@ function draw() {
   while (i < 7) {
     let n = i * i + 7;
 
-    hz = hz / 2;
-
     for (let r = 0; r < TAU; r += PI / n) {
       let angle = r + noise(frameCount / hz) * n * direction;
       let length = noise(frameCount / 50) * hz;
@@ -26,6 +24,8 @@ function draw() {
       circle(x, y, length / 20);
       direction = -direction;
     }
+
+    hz = hz / 2;
     i++;
   }
 }
