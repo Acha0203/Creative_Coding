@@ -6,7 +6,7 @@ function setup() {
 let img;
 
 function preload() {
-  img = loadImage('/assets/images/string-sextet-01-old.png');
+  img = loadImage('/assets/images/snowy-quartet-texture.png');
 }
 
 function draw() {
