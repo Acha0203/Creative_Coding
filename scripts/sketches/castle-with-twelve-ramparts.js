@@ -18,7 +18,7 @@ function draw() {
   texture(img);
   rotateY(angle);
 
-  Array.from({ length: 12 }, (_, i) => 12 - i).forEach((r) => {
+  Array.from({ length: 12 }, (_, i) => 1 + i).forEach((r) => {
     tint(frameCount % (r * 30), 90, 90);
     cylinder(frameCount % (r * 90), 200, 90, 1, 0, 0);
   });
