@@ -30,10 +30,10 @@ function setup() {
     noStroke();
     fill('#' + random(col_pat) + '10');
 
-    let csize = random(30, 80);
+    let c_size = random(30, 80);
 
     while (x < W) {
-      circle(x, y, csize);
+      circle(x, y, c_size);
       x = x + lx * abs(sin(t * rx + ofx));
       y = y + ly * cos(t * ry + ofy);
 

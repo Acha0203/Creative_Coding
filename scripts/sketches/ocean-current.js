@@ -7,10 +7,8 @@ function setup() {
 }
 
 function draw() {
-  let half_width = width / 2;
-  let half_height = height / 2;
-  let fish_width = width / 50;
-  let fish_height = fish_width / 3;
+  let w = width / 2;
+  let h = height / 2;
 
   t += 0.01;
   blendMode(BLEND);
@@ -19,12 +17,7 @@ function draw() {
 
   for (let r = 0; r < 30; r += 0.1) {
     fill(200 + r, 8 * r, 8 * r, 0.2);
-    ellipse(
-      tan(r * 2 + t) * half_width + half_width,
-      sin(t + r / noise(3, 9)) * sin(r * 5 + t) * half_height + half_height,
-      fish_width,
-      fish_height,
-    );
+    ellipse(tan(r * 2 + t) * w + w, sin(t + r / noise(3, 9)) * sin(r * 5 + t) * h + h, 30, 9);
   }
 }
 
