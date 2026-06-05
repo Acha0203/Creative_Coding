@@ -17,5 +17,3 @@ function draw() {
     point(i, height / 2 + height * volume * sin((i * frequency * TAU) / width));
   }
 }
-
-// #minacoding 2026 June 6th, Place
