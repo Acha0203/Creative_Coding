@@ -1,7 +1,7 @@
 function setup() {
   createCanvas(windowWidth, windowHeight);
   colorMode(HSB);
-  noFill();
+  noStroke();
 }
 
 function draw() {
@@ -15,8 +15,8 @@ function draw() {
       const x = getBezierPoint(width, i, numberToFill, 0, 1, 2, 3);
       const y = getBezierPoint(height, i, numberToFill, 4, 5, 6, 7);
 
-      stroke((frameCount + j * i) % 360, 90, 90, 0.1);
-      circle(x, y, j * 1.5);
+      fill((frameCount + j * i) % 360, 90, 90, 0.03);
+      circle(x, y, j);
     }
   }
 }
