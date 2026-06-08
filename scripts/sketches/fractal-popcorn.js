@@ -48,3 +48,6 @@ function drawPopcorn(dotSize, detail) {
     }
   }
 }
+
+// Fractal Popcorn
+// This code is based on 'Computer Recreation IV' by A. K. Dewdney.
