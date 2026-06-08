@@ -4,5 +4,15 @@
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "cSpell.words": ["dailycodingseed", "genuary", "millis", "minacoding", "nuxt"]
+  "cSpell.words": [
+    "Candeon",
+    "dailycodingseed",
+    "genuary",
+    "lerp",
+    "Megami",
+    "millis",
+    "minacoding",
+    "nuxt",
+    "Tensei"
+  ]
 }
