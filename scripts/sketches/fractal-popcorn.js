@@ -12,16 +12,16 @@ function draw() {
   translate(width / 2, height / 2);
 
   const dotSize = 5;
-  const detail = 150;
+  const zoomRatio = 150;
 
-  drawPopcorn(dotSize, detail);
+  drawPopcorn(dotSize, zoomRatio);
 }
 
 function calcXY(x, y) {
   return x - 0.05 * sin(y + tan(3 * y));
 }
 
-function drawPopcorn(dotSize, detail) {
+function drawPopcorn(dotSize, zoomRatio) {
   let x = 0;
   let y = 0;
 
@@ -43,7 +43,7 @@ function drawPopcorn(dotSize, detail) {
         y = yy;
 
         fill((repCount + n) % 360, 60, n, 0.7);
-        circle(x * detail, y * detail, dotSize);
+        circle(x * zoomRatio, y * zoomRatio, dotSize);
       }
     }
   }
