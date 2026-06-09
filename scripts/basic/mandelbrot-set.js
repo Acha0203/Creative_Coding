@@ -1,50 +1,22 @@
-// 複素平面上の値の範囲を設定
-// wの値を小さくするとズームできる
-let w = 4;
-let h = 0;
-let xMin = 0;
-let yMin = 0;
-
-// 複素平面上の各点の最大反復回数を設定
-let maxIterations = 100;
-
 function setup() {
   createCanvas(windowWidth, windowHeight);
   pixelDensity(1);
   background(0);
 
   // 複素平面上の値の範囲を設定
-  h = (w * height) / width;
+  // 幅の値を変えることでズームレベルが変わる
+  let w = 4;
+  let h = (w * height) / width;
 
   // 負の半幅と半高さから開始
-  xMin = -w / 2;
-  yMin = -h / 2;
-
-  drawMandelbrotSet();
-}
-
-function mouseClicked() {
-  // クリック位置をスクリーン座標 → 複素平面座標に変換
-  let cx = xMin + (mouseX / width) * w;
-  let cy = yMin + (mouseY / height) * h;
-
-  // ズームイン（範囲を半分に）
-  w = w / 2;
-  h = h / 2;
-
-  // クリック位置を新しい中心に設定
-  xMin = cx - w / 2;
-  yMin = cy - h / 2;
-
-  drawMandelbrotSet();
-}
-
-function drawMandelbrotSet() {
-  clear();
-  background(0);
+  let xMin = -w / 2;
+  let yMin = -h / 2;
 
   // pixels[] 配列にアクセス
   loadPixels();
+
+  // 複素平面上の各点の最大反復回数を設定
+  let maxIterations = 100;
 
   // xは xMin から xMax まで
   let xMax = xMin + w;
@@ -78,8 +50,8 @@ function drawMandelbrotSet() {
       // 色の補間のために正規化された値の平方根を使用
       let lerpAmount = sqrt(normalized);
 
-      // デフォルトの色を明るい黄色に設定
-      let pixelColor = color(255, 255, 200);
+      // デフォルトの色を黒に設定
+      let pixelColor = color(0);
 
       // 青
       let startColor = color(47, 68, 159);
