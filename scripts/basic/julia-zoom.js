@@ -8,6 +8,19 @@ let yMin = 0;
 // 複素平面上の各点の最大反復回数を設定
 let maxIterations = 100;
 
+// ジュリア集合の定数 c = cReal + cImag * i
+// let cReal = -0.7;
+// let cImag = 0.27;
+
+let cReal = 0.285;
+let cImag = 0.01;
+
+// let cReal = -0.4;
+// let cImag = 0.6;
+
+// let cReal = 0.0;
+// let cImag = 0.8;
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
   pixelDensity(1);
@@ -20,7 +33,7 @@ function setup() {
   xMin = -w / 2;
   yMin = -h / 2;
 
-  drawMandelbrotSet();
+  drawJuliaSet();
 }
 
 function mouseClicked() {
@@ -36,10 +49,10 @@ function mouseClicked() {
   xMin = cx - w / 2;
   yMin = cy - h / 2;
 
-  drawMandelbrotSet();
+  drawJuliaSet();
 }
 
-function drawMandelbrotSet() {
+function drawJuliaSet() {
   clear();
   background(0);
 
@@ -62,11 +75,11 @@ function drawMandelbrotSet() {
     // xの開始
     let x = xMin;
     for (let i = 0; i < width; i++) {
-      // z = z^2 + cm の反復が発散するかどうかをテスト
+      // 各ピクセルを z₀ の初期値として反復
       let a = x;
       let b = y;
       let iterations = 0;
-      let result = calcMandelbrotSet({ a, b, x, y, iterations, maxIterations });
+      let result = calcJuliaSet({ a, b, cReal, cImag, iterations, maxIterations });
 
       // 無限大に達するまでの時間に基づいて各ピクセルに色を付ける
 
@@ -78,14 +91,14 @@ function drawMandelbrotSet() {
       // 色の補間のために正規化された値の平方根を使用
       let lerpAmount = sqrt(normalized);
 
-      // デフォルトの色を明るい黄色に設定
-      let pixelColor = color(255, 255, 200);
+      // デフォルトの色
+      let pixelColor = color(150, 255, 255);
 
-      // 青
-      let startColor = color(47, 68, 159);
+      // 濃い色
+      let startColor = color(0, 50, 50);
 
-      // 明るい黄色
-      let endColor = color(255, 255, 128);
+      // 明るい色
+      let endColor = color(100, 255, 255);
 
       // 反復回数が最大未満の場合、色を補間
       if (result.iterations < maxIterations) {
@@ -105,20 +118,20 @@ function drawMandelbrotSet() {
   updatePixels();
 }
 
-function calcMandelbrotSet({ a, b, x, y, iterations, maxIterations }) {
-  let aSquared = a * a;
-  let bSquared = b * b;
-
+function calcJuliaSet({ a, b, cReal, cImag, iterations, maxIterations }) {
   // 値が大きすぎる場合、処理を停止（ベースケース）
   if (a * a + b * b > 4 || iterations >= maxIterations) {
     return { iterations };
   }
 
+  let aSquared = a * a;
+  let bSquared = b * b;
   let twoAB = 2.0 * a * b;
 
-  a = aSquared - bSquared + x;
-  b = twoAB + y;
+  // z = z² + c （c は固定定数）
+  a = aSquared - bSquared + cReal;
+  b = twoAB + cImag;
   iterations += 1;
 
-  return calcMandelbrotSet({ a, b, x, y, iterations, maxIterations });
+  return calcJuliaSet({ a, b, cReal, cImag, iterations, maxIterations });
 }

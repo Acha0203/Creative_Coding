@@ -110,8 +110,8 @@ function calcMandelbrotSet({ a, b, x, y, iterations, maxIterations }) {
   let bSquared = b * b;
 
   // 値が大きすぎる場合、処理を停止（ベースケース）
-  if (dist(aSquared, bSquared, 0, 0) > 16 || iterations >= maxIterations) {
-    return { a, b, x, y, iterations, maxIterations };
+  if (a * a + b * b > 4 || iterations >= maxIterations) {
+    return { iterations };
   }
 
   let twoAB = 2.0 * a * b;
