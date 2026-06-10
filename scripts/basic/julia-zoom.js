@@ -6,7 +6,7 @@ let xMin = 0;
 let yMin = 0;
 
 // 複素平面上の各点の最大反復回数を設定
-let maxIterations = 400;
+let maxIterations = 1000;
 
 // ジュリア集合の定数 c = cReal + cImag * i
 // let cReal = -0.7;
@@ -95,13 +95,13 @@ function drawJuliaSet() {
       let lerpAmount = sqrt(normalized);
 
       // デフォルトの色
-      let pixelColor = color(180, 255, 255);
+      let pixelColor = color(0, 255, 200);
 
       // 外側の色
-      let startColor = color(0, 200, 160);
+      let startColor = color(0, 50, 60);
 
       // 明るい色
-      let endColor = color(0, 120, 100);
+      let endColor = color(0, 255, 200);
 
       // 反復回数が最大未満の場合、色を補間
       if (result.iterations < maxIterations) {

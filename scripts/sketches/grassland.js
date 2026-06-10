@@ -83,3 +83,4 @@ function drawBlade(bx, by, ix, iy) {
 }
 
 // #minacoding 2026 June 11th, Green
+// マウスを動かすと草原に風が吹きます。
