@@ -1,7 +1,7 @@
 const gap = 50; // 草の間隔
 const bladeWidth = 8; // 草の横幅（太さ）
-const bladeLength = 700; // 草の長さ
-const numSegments = 300; // 草のなめらかさ
+const bladeLength = 500; // 草の長さ
+const numSegments = 200; // 草のなめらかさ
 let grasses = [];
 let windStrength = 0;
 let prevMouseX = 0;
@@ -83,4 +83,5 @@ function drawBlade(bx, by, ix, iy) {
 }
 
 // #minacoding 2026 June 11th, Green
-// マウスを動かすと草原に風が吹きます。
+// Moving your mouse on the screen will bring the wind to the grassland.
+// 画面上でマウスを動かすと草原に風が吹きます。
