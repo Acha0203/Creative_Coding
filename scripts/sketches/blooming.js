@@ -1,4 +1,4 @@
-let flowers = [];
+const flowers = [];
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -7,7 +7,6 @@ function setup() {
 
   const numberOfFlowers = 10;
   const maxSize = width / numberOfFlowers;
-  // let numberOfFlowers = Math.floor(width * height * (3 / 1e5));
 
   for (let i = 0; i < numberOfFlowers; i++) {
     flowers.push(new Flower(maxSize));

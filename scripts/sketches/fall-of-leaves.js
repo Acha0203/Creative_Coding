@@ -1,4 +1,4 @@
-let leaves = [];
+const leaves = [];
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
