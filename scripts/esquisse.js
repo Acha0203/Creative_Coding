@@ -1,12 +1,14 @@
 const leaves = [];
 const flowers = [];
+const stars = [];
 const texts = ['木稠葉落更回春', '長緑生花旧約新', '森也深恩若忘却', '無量億劫畜生身'];
-const textsAnimDuration = 30;
+const textsAnimDuration = 60;
 const textsHoldDuration = 60;
 const textsFadeOutDuration = 60;
 const textsGapDuration = 0;
 const intermissionFadeDuration = textsFadeOutDuration * 2;
 const textsFinalFadeInDuration = 240;
+const oneTextDuration = textsAnimDuration * texts[0].length + textsHoldDuration;
 let textsLayer, intermissionLayer;
 
 function setup() {
@@ -26,24 +28,43 @@ function setup() {
   for (let i = 0; i < numberOfFlowers; i++) {
     flowers.push(new Flower(maxSize));
   }
+
+  const numberOfStars = Math.floor(width * height * (6 / 1e5));
+
+  for (let i = 0; i < numberOfStars; i++) {
+    stars.push(new Star());
+  }
 }
 
 function draw() {
-  const oneTextDuration = textsAnimDuration * texts[0].length + textsHoldDuration;
-  const leavesFadeEnd = oneTextDuration + intermissionFadeDuration;
-  const flowersFadeStart = leavesFadeEnd;
-  const flowersFadeEnd = flowersFadeStart + intermissionFadeDuration;
+  const leavesFadeOutEnd = oneTextDuration + intermissionFadeDuration;
+  const flowersFadeInStart = leavesFadeOutEnd;
+  const flowersFadeInEnd = flowersFadeInStart + oneTextDuration;
+  const flowersFadeOutStart = flowersFadeInEnd;
+  const flowersFadeOutEnd = flowersFadeOutStart + intermissionFadeDuration;
+  const blackoutFadeInStart = flowersFadeOutEnd;
+  const blackoutFadeInEnd = blackoutFadeInStart + oneTextDuration;
+  const starsFadeInStart = blackoutFadeInEnd;
+  const starsFadeInEnd = starsFadeInStart + intermissionFadeDuration;
 
   background(0);
   noStroke();
 
-  if (frameCount > oneTextDuration && frameCount <= flowersFadeEnd) {
-    intermission();
+  if (frameCount > oneTextDuration && frameCount <= flowersFadeInEnd) {
+    intermission(oneTextDuration, false);
   }
 
-  displayAllTexts(texts, height / 15);
+  if (frameCount > flowersFadeOutStart && frameCount <= flowersFadeOutEnd) {
+    blendMode(BLEND);
+    background(0);
+    intermission(flowersFadeOutStart, true);
+  }
 
-  if (frameCount <= leavesFadeEnd) {
+  if (frameCount > starsFadeInStart && frameCount <= starsFadeInEnd) {
+    intermission(starsFadeInStart, true);
+  }
+
+  if (frameCount <= leavesFadeOutEnd) {
     const factor = max(0, 1 - max(0, frameCount - oneTextDuration) / intermissionFadeDuration);
 
     for (let i = 0; i < leaves.length; i++) {
@@ -51,8 +72,16 @@ function draw() {
     }
   }
 
-  if (frameCount > flowersFadeStart) {
-    const factor = min(1, (frameCount - flowersFadeStart) / intermissionFadeDuration);
+  if (frameCount > flowersFadeInStart && frameCount <= flowersFadeOutEnd) {
+    let factor = 1;
+
+    if (frameCount <= flowersFadeInEnd) {
+      factor = min(1, (frameCount - flowersFadeInStart) / intermissionFadeDuration);
+    }
+
+    if (frameCount > flowersFadeOutStart) {
+      factor = max(0, 1 - max(0, frameCount - flowersFadeOutStart) / intermissionFadeDuration);
+    }
 
     blendMode(BLEND);
     background(0, 0.05);
@@ -63,6 +92,21 @@ function draw() {
       flowers[i].bloom(factor);
     }
   }
+
+  if (frameCount > starsFadeInStart) {
+    const factor = min(1, (frameCount - starsFadeInEnd) / intermissionFadeDuration);
+
+    blendMode(BLEND);
+    background(0);
+    blendMode(ADD);
+    noStroke();
+
+    for (let i = 0; i < stars.length; i++) {
+      stars[i].twinkle(factor);
+    }
+  }
+
+  displayAllTexts(texts, height / 15);
 }
 
 class Leaf {
@@ -113,8 +157,11 @@ class Flower {
   }
 
   bloom(brightnessFactor = 1) {
-    let direction = 3;
     const t = frameCount / 5;
+    const period = 90;
+    const oscillation = 1 - abs((t % (2 * period)) / period - 1);
+
+    let direction = 3;
 
     push();
     translate(this.x, this.y);
@@ -123,19 +170,42 @@ class Flower {
       let angle = r + (sin(t / 50) / 3) * direction;
       let x = cos(angle) * this.size;
       let y = sin(angle) * this.size;
-      stroke(this.size + ((t + this.size) % 300), 30, (t % 10) * brightnessFactor);
-      circle(x, y, this.size + (t % 90));
+      stroke(this.size + ((t + this.size) % 300), 30, 30 * brightnessFactor * oscillation, 0.5);
+      circle(x, y, this.size + (t % period));
       direction = -direction;
     }
 
     pop();
 
-    if (frameCount % 75 === 0) {
+    if (t % period === 0) {
       this.x = random(width);
       this.y = random(height);
       this.size = random(this.maxSize / 2, this.maxSize);
       this.petals = random(4, 6);
     }
+  }
+}
+
+class Star {
+  constructor() {
+    this.x = random(width);
+    this.y = random(height);
+    this.size = random(5, 10);
+    this.duration = random(30, 60);
+  }
+
+  twinkle(brightnessFactor = 1) {
+    const progress = 1 - abs((frameCount % (2 * this.duration)) / this.duration - 1);
+
+    push();
+    fill(this.duration * 2 + (frameCount % 300), 50, 10 * progress * brightnessFactor);
+    translate(this.x, this.y);
+
+    for (let l = 0; l < HALF_PI; l += 0.1) {
+      ellipse(0, 0, tan(l) * this.size, tan(HALF_PI - l) * this.size);
+    }
+
+    pop();
   }
 }
 
@@ -202,21 +272,25 @@ function displayAllTexts(textsArray, size) {
   image(textsLayer, 0, 0);
 }
 
-function intermission() {
-  const intermissionStart = texts[0].length * textsAnimDuration + textsHoldDuration;
+function intermission(intermissionStart, isFadeIn) {
   const elapsed = frameCount - intermissionStart;
 
-  const progress = max(0, min(1, 1 - abs(elapsed / intermissionFadeDuration - 1)));
+  let factor = (fadeOutFactor = max(0, 1 - max(0, elapsed) / intermissionFadeDuration));
+
+  if (isFadeIn) {
+    factor = max(0, min(1, 1 - abs(elapsed / intermissionFadeDuration - 1)));
+  }
 
   intermissionLayer.clear();
   intermissionLayer.colorMode(HSB);
   intermissionLayer.noStroke();
-  intermissionLayer.fill(0, 0, 0, 100 * progress);
+  intermissionLayer.fill(0, 0, 0, 100 * factor);
   intermissionLayer.rect(0, 0, width, height);
 
-  blendMode(BLEND);
   image(intermissionLayer, 0, 0);
 }
 
+// #minacoding 2026 June 14th, Story
+// 謝森公深恩之願書
 // 下記のコードを参考にしました
 // https://editor.p5js.org/coderdojokamiyama/sketches/usgflU5tJ
