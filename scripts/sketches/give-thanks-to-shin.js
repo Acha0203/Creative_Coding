@@ -2,7 +2,7 @@ const leaves = [];
 const flowers = [];
 const stars = [];
 const texts = ['木稠葉落更回春', '長緑生花旧約新', '森也深恩若忘却', '無量億劫畜生身'];
-const textsAnimDuration = 60;
+const textsAnimDuration = 30;
 const textsHoldDuration = 60;
 const textsFadeOutDuration = 60;
 const textsGapDuration = 0;
@@ -10,6 +10,10 @@ const intermissionFadeDuration = textsFadeOutDuration * 2;
 const textsFinalFadeInDuration = 240;
 const oneTextDuration = textsAnimDuration * texts[0].length + textsHoldDuration;
 let textsLayer, intermissionLayer;
+
+async function preload() {
+  minchoFont = await loadFont('/assets/font/HinaMincho-Regular.ttf');
+}
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -219,7 +223,7 @@ function displayAllTexts(textsArray, size) {
   textsLayer.clear();
   textsLayer.colorMode(HSB);
   textsLayer.noStroke();
-  textsLayer.textFont('serif');
+  textsLayer.textFont(minchoFont);
   textsLayer.textSize(size);
 
   // Phase 1: 1文字列ずつ順番にフェードイン→フェードアウト
@@ -227,6 +231,7 @@ function displayAllTexts(textsArray, size) {
     const txt = textsArray[j];
     const startFrame = j * phaseDuration;
     const fadeOutStart = startFrame + txt.length * textsAnimDuration + textsHoldDuration;
+    const textsFadeInDuration = text.length * textsAnimDuration;
 
     if (frameCount < startFrame || frameCount >= startFrame + phaseDuration) continue;
 
@@ -235,12 +240,22 @@ function displayAllTexts(textsArray, size) {
 
     for (let i = 0; i < txt.length; i++) {
       const charProgress = min(
-        max((frameCount - startFrame - i * textsAnimDuration) / textsAnimDuration, 0),
+        max((frameCount - startFrame - i * textsAnimDuration) / textsFadeInDuration, 0),
         1,
       );
       const fadeOutProgress = min(max((frameCount - fadeOutStart) / textsFadeOutDuration, 0), 1);
 
-      textsLayer.fill(0, 0, maxBrightness * charProgress * (1 - fadeOutProgress));
+      let textLightenFactor = 1;
+
+      if (j === 1 || j === 2) {
+        textLightenFactor = 0.1;
+      }
+
+      textsLayer.fill(
+        0,
+        0,
+        textLightenFactor * maxBrightness * charProgress * (1 - fadeOutProgress),
+      );
       textsLayer.text(txt[i], 0, size * 1.2 * i);
     }
 
@@ -292,5 +307,3 @@ function intermission(intermissionStart, isFadeIn) {
 
 // #minacoding 2026 June 14th, Story
 // 謝森公深恩之願書
-// 下記のコードを参考にしました
-// https://editor.p5js.org/coderdojokamiyama/sketches/usgflU5tJ
