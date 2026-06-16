@@ -7,7 +7,7 @@ const textsHoldDuration = 60;
 const textsFadeOutDuration = 60;
 const textsGapDuration = 0;
 const intermissionFadeDuration = textsFadeOutDuration * 2;
-const textsFinalFadeInDuration = 240;
+const textsFinalFadeInDuration = 480;
 const oneTextDuration = textsAnimDuration * texts[0].length + textsHoldDuration;
 let textsLayer, intermissionLayer;
 
@@ -231,7 +231,7 @@ function displayAllTexts(textsArray, size) {
     const txt = textsArray[j];
     const startFrame = j * phaseDuration;
     const fadeOutStart = startFrame + txt.length * textsAnimDuration + textsHoldDuration;
-    const textsFadeInDuration = text.length * textsAnimDuration;
+    const textsFadeInDuration = txt.length * textsAnimDuration;
 
     if (frameCount < startFrame || frameCount >= startFrame + phaseDuration) continue;
 
@@ -243,19 +243,10 @@ function displayAllTexts(textsArray, size) {
         max((frameCount - startFrame - i * textsAnimDuration) / textsFadeInDuration, 0),
         1,
       );
-      const fadeOutProgress = min(max((frameCount - fadeOutStart) / textsFadeOutDuration, 0), 1);
+      const fadeOutDuration = j === 0 ? textsFadeOutDuration : intermissionFadeDuration;
+      const fadeOutProgress = min(max((frameCount - fadeOutStart) / fadeOutDuration, 0), 1);
 
-      let textLightenFactor = 1;
-
-      if (j === 1 || j === 2) {
-        textLightenFactor = 0.1;
-      }
-
-      textsLayer.fill(
-        0,
-        0,
-        textLightenFactor * maxBrightness * charProgress * (1 - fadeOutProgress),
-      );
+      textsLayer.fill(0, 0, maxBrightness * charProgress * (1 - fadeOutProgress));
       textsLayer.text(txt[i], 0, size * 1.2 * i);
     }
 
