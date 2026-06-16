@@ -260,7 +260,7 @@ function displayAllTexts(textsArray, size) {
     const flashStart = phase2StartFrame + textsFinalFadeInDuration;
     const fadeOutStart = flashStart + textsFlashDuration;
     const fadeOutEnd = fadeOutStart + textsFinalFadeOutDuration;
-    const maxGlow = size * 1.5;
+    const maxGlow = size * 1.2;
 
     let brightness, glowAmount;
 
@@ -287,13 +287,14 @@ function displayAllTexts(textsArray, size) {
         (height - size * 1.2 * txt.length + size * 1.2) / 2,
       );
       textsLayer.fill(0, 0, brightness);
-      textsLayer.drawingContext.shadowColor = '#88c8aa';
+      textsLayer.drawingContext.shadowColor = '#cff';
       textsLayer.drawingContext.shadowBlur = glowAmount;
 
       for (let i = 0; i < txt.length; i++) {
         textsLayer.text(txt[i], 0, size * 1.2 * i);
       }
 
+      // 他の描画に影響しないように描画後にshadowBlurをリセット
       textsLayer.drawingContext.shadowBlur = 0;
       textsLayer.pop();
     }
@@ -321,4 +322,8 @@ function intermission(intermissionStart, isFadeIn) {
 }
 
 // #minacoding 2026 June 14th, Story
-// 謝森公深恩之願書
+// 謝森公深恩之願書 一休宗純
+// 木稠ぎ葉落ちて更に春を回す、
+// 緑を長じ花を生じて旧約新たなり。
+// 森也が深恩、若し忘却せば、
+// 無量億劫、畜生の身。
