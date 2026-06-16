@@ -7,7 +7,9 @@ const textsHoldDuration = 60;
 const textsFadeOutDuration = 60;
 const textsGapDuration = 0;
 const intermissionFadeDuration = textsFadeOutDuration * 2;
-const textsFinalFadeInDuration = 480;
+const textsFinalFadeInDuration = 120;
+const textsFlashDuration = 60;
+const textsFinalFadeOutDuration = 240;
 const oneTextDuration = textsAnimDuration * texts[0].length + textsHoldDuration;
 let textsLayer, intermissionLayer;
 
@@ -253,9 +255,28 @@ function displayAllTexts(textsArray, size) {
     textsLayer.pop();
   }
 
-  // Phase 2: 全文字列が finalXOffsets の位置で同時フェードイン
+  // Phase 2: 全文字列が finalXOffsets の位置で同時フェードイン→燐光発光→フェードアウト
   if (frameCount >= phase2StartFrame) {
-    const phase2Progress = min((frameCount - phase2StartFrame) / textsFinalFadeInDuration, 1);
+    const flashStart = phase2StartFrame + textsFinalFadeInDuration;
+    const fadeOutStart = flashStart + textsFlashDuration;
+    const fadeOutEnd = fadeOutStart + textsFinalFadeOutDuration;
+    const maxGlow = size * 1.5;
+
+    let brightness, glowAmount;
+
+    if (frameCount < flashStart) {
+      const t = (frameCount - phase2StartFrame) / textsFinalFadeInDuration;
+      brightness = maxBrightness * t;
+      glowAmount = 0;
+    } else if (frameCount < fadeOutStart) {
+      const t = (frameCount - flashStart) / textsFlashDuration;
+      brightness = maxBrightness;
+      glowAmount = maxGlow * sin(PI * t);
+    } else {
+      const t = min((frameCount - fadeOutStart) / textsFinalFadeOutDuration, 1);
+      brightness = maxBrightness * (1 - t);
+      glowAmount = maxGlow * (1 - t);
+    }
 
     for (let j = 0; j < textsArray.length; j++) {
       const txt = textsArray[j];
@@ -265,12 +286,15 @@ function displayAllTexts(textsArray, size) {
         (width - size) / 2 + finalXOffsets[j],
         (height - size * 1.2 * txt.length + size * 1.2) / 2,
       );
-      textsLayer.fill(0, 0, maxBrightness * phase2Progress);
+      textsLayer.fill(0, 0, brightness);
+      textsLayer.drawingContext.shadowColor = '#88c8aa';
+      textsLayer.drawingContext.shadowBlur = glowAmount;
 
       for (let i = 0; i < txt.length; i++) {
         textsLayer.text(txt[i], 0, size * 1.2 * i);
       }
 
+      textsLayer.drawingContext.shadowBlur = 0;
       textsLayer.pop();
     }
   }
