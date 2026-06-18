@@ -59,6 +59,8 @@ function drawJuliaSet() {
   clear();
   background(0);
 
+  console.log('Started!');
+
   // pixels[] 配列にアクセス
   loadPixels();
 
@@ -95,7 +97,7 @@ function drawJuliaSet() {
       let lerpAmount = sqrt(normalized);
 
       // デフォルトの色
-      let pixelColor = color(0, 255, 200);
+      let pixelColor = color(100, 255, 200);
 
       // 外側の色
       let startColor = color(0, 50, 60);
@@ -119,6 +121,8 @@ function drawJuliaSet() {
   }
 
   updatePixels();
+
+  console.log('Completed!');
 }
 
 function calcJuliaSet({ a, b, cReal, cImag, iterations, maxIterations }) {
@@ -138,3 +142,7 @@ function calcJuliaSet({ a, b, cReal, cImag, iterations, maxIterations }) {
 
   return calcJuliaSet({ a, b, cReal, cImag, iterations, maxIterations });
 }
+
+// #minacoding 2026 June 17th, Header Image
+// By clicking on the screen, you can generate a Julia set centered on that point at a magnification of 2.
+// 画面上でクリックすると、その点を中心にジュリア集合を2倍の倍率で生成できます。

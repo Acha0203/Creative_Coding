@@ -6,7 +6,7 @@ let xMin = 0;
 let yMin = 0;
 
 // 複素平面上の各点の最大反復回数を設定
-let maxIterations = 100;
+let maxIterations = 1000;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -43,6 +43,8 @@ function drawMandelbrotSet() {
   clear();
   background(0);
 
+  console.log('Started!');
+
   // pixels[] 配列にアクセス
   loadPixels();
 
@@ -78,14 +80,14 @@ function drawMandelbrotSet() {
       // 色の補間のために正規化された値の平方根を使用
       let lerpAmount = sqrt(normalized);
 
-      // デフォルトの色を明るい黄色に設定
-      let pixelColor = color(255, 255, 200);
+      // デフォルトの色
+      let pixelColor = color(0, 0, 0);
 
-      // 青
-      let startColor = color(47, 68, 159);
+      // 外側の色
+      let startColor = color(20, 0, 80);
 
-      // 明るい黄色
-      let endColor = color(255, 255, 128);
+      // 明るい色
+      let endColor = color(150, 150, 255);
 
       // 反復回数が最大未満の場合、色を補間
       if (result.iterations < maxIterations) {
@@ -103,6 +105,8 @@ function drawMandelbrotSet() {
   }
 
   updatePixels();
+
+  console.log('Completed!');
 }
 
 function calcMandelbrotSet({ a, b, x, y, iterations, maxIterations }) {
