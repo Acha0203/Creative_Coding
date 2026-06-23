@@ -56,7 +56,7 @@ function drawHair(
     let colorB = startColorB + blueValue * i;
 
     fill(colorR, colorG, colorB);
-    drawOneHair(x, progress, colorR, colorG, colorB);
+    drawOneHair(x, progress);
   }
 }
 

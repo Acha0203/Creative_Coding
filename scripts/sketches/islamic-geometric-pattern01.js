@@ -1,4 +1,4 @@
-let layer1, layer2, layer3, layer4;
+let layer1, layer2, layer3;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
