@@ -21,6 +21,7 @@ class Shape {
     this.accelY = 0;
     this.organicConstant = 1;
     this.hue = random(120, 280);
+    this.brightness = 100;
 
     this.pushOffsetX = 0;
     this.pushOffsetY = 0;
@@ -78,6 +79,8 @@ class Shape {
     for (let i = 0; i < this.nodes; i++) {
       this.frequency[i] = random(5, 12);
     }
+
+    this.brightness = (this.radius / maxRadius) * 100;
   }
 
   hasOverlap(x, y, radius) {
@@ -117,13 +120,13 @@ class Shape {
     curveTightness(this.organicConstant);
 
     // グローエフェクトに使用する色の設定
-    const glowColor = color(this.hue, 100, 100);
+    const glowColor = color(this.hue, 100, this.brightness);
 
     drawingContext.shadowOffsetX = 0;
     drawingContext.shadowOffsetY = 0;
     drawingContext.shadowBlur = this.radius / 2;
     drawingContext.shadowColor = glowColor;
-    fill(this.hue, 20, 100, 100);
+    fill(this.hue, 10, 10, 40);
 
     beginShape();
 
@@ -203,7 +206,9 @@ function setup() {
 }
 
 function draw() {
-  background(0, 0, 100);
+  blendMode(BLEND);
+  background(0);
+  blendMode(ADD);
 
   for (const s of shapes) {
     s.drawShape();
