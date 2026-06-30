@@ -58,7 +58,7 @@ function drawCentralStar(rectWidth) {
   layer1.pop();
 }
 
-function drawBlurFrame(radius) {
+function drawBlurFrame(diameter) {
   layer3 = createGraphics(width, height);
 
   layer3.noStroke();
@@ -66,7 +66,7 @@ function drawBlurFrame(radius) {
   layer3.rect(0, 0, width, height);
   layer3.translate(width / 2, height / 2);
   layer3.erase();
-  layer3.circle(0, 0, radius * 0.85);
+  layer3.circle(0, 0, diameter * 0.85);
   layer3.filter(BLUR, 30);
   layer3.noErase();
 }
