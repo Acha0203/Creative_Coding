@@ -66,7 +66,7 @@ class Flower {
       let length = noise(frameCount / 100) * m;
       let x = cos(angle) * length + width / 2;
       let y = sin(angle) * length + height / 2;
-      circle(x, y, length / 4);
+      circle(x, y, (length / 2) * sin(frameCount / 50));
       direction = -direction;
     }
   }
