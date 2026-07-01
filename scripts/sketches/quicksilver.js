@@ -22,23 +22,27 @@ function draw() {
       let brightValue = 0;
 
       for (let i = 0; i < quicksilverList.length; i++) {
-        let xDiff = x - quicksilverList[i].x;
-        let yDiff = y - quicksilverList[i].y;
-        let distance = sqrt(xDiff * xDiff + yDiff * yDiff);
+        if (brightValue < 500) {
+          let xDiff = x - quicksilverList[i].x;
+          let yDiff = y - quicksilverList[i].y;
+          let distance = sqrt(xDiff * xDiff + yDiff * yDiff);
 
-        brightValue += (10 * quicksilverList[i].radius) / distance;
+          brightValue += (10 * quicksilverList[i].radius) / distance;
+        } else {
+          brightValue = 500;
+        }
       }
 
       if (brightValue < 150) {
         brightValue = 50;
       } else if (brightValue >= 150 && brightValue < 240) {
-        brightValue = map(brightValue, 150, 239, 50, 60);
+        brightValue = map(brightValue, 150, 239, 50, 70);
       } else if (brightValue >= 240 && brightValue < 300) {
         brightValue = map(brightValue, 240, 299, 20, 45);
       } else if (brightValue >= 300 && brightValue < 400) {
         brightValue = map(brightValue, 300, 399, 46, 70);
       } else if (brightValue >= 400 && brightValue < 500) {
-        brightValue = map(brightValue, 400, 499, 71, 80);
+        brightValue = map(brightValue, 400, 499, 71, 79);
       } else {
         brightValue = 80;
       }
@@ -82,3 +86,8 @@ class Quicksilver {
 }
 
 // #minacoding 2026 June 28th, Fluid
+// Because I am an alchemy enthusiast, I tried to represent something like mercury.
+// By the way, this code was wrote by referring to the code below. Thank you.
+// 錬金術オタクなので、水銀のようなものを表現してみました。
+// なお、今回は下記のコードを参考にさせていただきました。
+// https://editor.p5js.org/codingtrain/sketches/ISPozOLXW
