@@ -147,7 +147,7 @@ class Drunkard {
   randomWalk() {
     let randomFactor = random();
 
-    if (randomFactor < 0.5) {
+    if (randomFactor < 0.3) {
       // 中心に引き寄せられる
       const centerX = 0;
       const centerY = 0;
