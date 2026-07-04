@@ -1,36 +1,27 @@
-const volume = 0.3;
-const frequency = 5;
-const noiseScale = 0.01;
-const numCurtains = 30;
-const noiseSeed = 1000;
+t = 0;
+d = 1;
+s = 140;
+g = 220;
 
-let t = 0;
+draw = (_) => {
+  t++ || (createCanvas((w = 720), w), noFill(), (S = sin), (C = cos));
+  background(0, 10);
+  strokeWeight(12);
+  strokeCap(PROJECT);
 
-function setup() {
-  createCanvas(windowWidth, windowHeight);
-  colorMode(HSB);
-  strokeWeight(5);
-  noFill();
-}
+  for (x = 0; x <= w + g; x += g)
+    for (y = 0; y <= w + g; y += g) {
+      stroke(
+        60,
+        (e = y + s * -S((a = -PI + (PI / 60) * (t % 60)))) % 80,
+        e % g
+      );
 
-function draw() {
-  background(0, 0.1);
-
-  t += 5;
-
-  const numPoints = width / 3;
-  const stagger = height / numCurtains;
-
-  for (let j = 0; j < numCurtains; j++) {
-    const fallY = (t + stagger * j) % height;
-
-    for (let i = 0; i < numPoints; i++) {
-      const noiseFactor = noise(i * noiseScale, noiseSeed * j + t * 0.002) - 0.5;
-      const x = (i * (width / numPoints)) % width;
-      const y = fallY + height * volume * noiseFactor * sin((x * frequency * TAU) / width);
-
-      stroke((90 + t + stagger * j) % 200, 90, (t + stagger * j) % 100, 0.5);
-      point(x, y);
+      t % 60 != 0
+        ? line((f = x + s * -C(a) * d), e, x + s * C(a) * d, y + s * S(a))
+        : (d = -d);
     }
-  }
-}
+};
+
+// #つぶやきProcessing #p5js
+// #dailycodingseed strokeCap()
