@@ -1,17 +1,15 @@
-let segments; // 放電の分割数
-
 function setup() {
   createCanvas(windowWidth, windowHeight);
   colorMode(HSB);
-
-  // 放電の分割数を高さに基づいて設定
-  segments = height / 40;
 }
 
 function draw() {
   blendMode(BLEND);
   background(0, 0.1);
   blendMode(ADD);
+
+  // 放電の分割数を高さに基づいて設定
+  const segments = height / 40;
 
   // 放電の軌跡を描画
   if (random() < 0.05) {
@@ -20,10 +18,7 @@ function draw() {
 }
 
 function drawLightning(segments) {
-  const start = frameCount;
-
   noFill();
-
   beginShape();
 
   const X1 = random(0, width);
