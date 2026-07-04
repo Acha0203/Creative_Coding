@@ -19,5 +19,21 @@
     "mult",
     "nuxt",
     "Tensei"
+  ],
+  "cSpell.ignorePaths": [
+    "**/p5.esm.min.js",
+    "**/p5.esm.min.js.map",
+    "**/p5.min.js",
+    "**/p5.min.js.map",
+    "**/p5.webgpu.esm.js",
+    "**/p5.webgpu.min.js",
+    "**/p5.webgpu.min.js.map",
+    "**/package.json",
+    "**/package-lock.json",
+    "**/node_modules/**",
+    "**/vscode-extension/**",
+    "**/.git/objects/**",
+    ".vscode",
+    ".vscode-insiders"
   ]
 }

@@ -1,27 +1,35 @@
-t = 0;
-d = 1;
-s = 140;
-g = 220;
+let img;
 
-draw = (_) => {
-  t++ || (createCanvas((w = 720), w), noFill(), (S = sin), (C = cos));
-  background(0, 10);
-  strokeWeight(12);
-  strokeCap(PROJECT);
+function preload() {
+  img = loadImage('/assets/images/flow-field-03-lg.png');
+}
 
-  for (x = 0; x <= w + g; x += g)
-    for (y = 0; y <= w + g; y += g) {
-      stroke(
-        60,
-        (e = y + s * -S((a = -PI + (PI / 60) * (t % 60)))) % 80,
-        e % g
-      );
+function setup() {
+  createCanvas(windowWidth, windowHeight, WEBGL);
+  colorMode(HSB);
+}
 
-      t % 60 != 0
-        ? line((f = x + s * -C(a) * d), e, x + s * C(a) * d, y + s * S(a))
-        : (d = -d);
-    }
-};
+function draw() {
+  let angle = frameCount * 0.01;
 
-// #つぶやきProcessing #p5js
-// #dailycodingseed strokeCap()
+  background(0);
+  blendMode(ADD);
+
+  texture(img);
+  rotateY(angle);
+
+  Array.from({ length: 12 }, (_, i) => 1 + i).forEach((r) => {
+    tint(frameCount % (r * 30), 90, 90);
+    cylinder(frameCount % (r * 90), 200, 90, 1, 0, 0);
+  });
+}
+
+// #minacoding 2026 June 4th, Castle
+
+// At the fyrst Gate, now art thou in,
+// Of the Phylosophers Castle where they dwell;
+// Proceede wysely that you may wyne
+// In at mo Gates of that Castell,
+// Whych Castle is round as any Bell:
+// And Gates hath Eleven yet mo,
+// One ys conquered, now to the second go.
