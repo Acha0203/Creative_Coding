@@ -14,7 +14,7 @@ const oneTextDuration = textsAnimDuration * texts[0].length + textsHoldDuration;
 let textsLayer, intermissionLayer;
 
 async function preload() {
-  minchoFont = await loadFont('/assets/font/HinaMincho-Regular.ttf');
+  minchoFont = await loadFont('/assets/fonts/HinaMincho-Regular.ttf');
 }
 
 function setup() {
