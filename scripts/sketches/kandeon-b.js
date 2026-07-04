@@ -40,4 +40,4 @@ draw = _ => {
 }
 
 // #minacoding 2026 June 9th, Magic
-// I created this based on the image of Candeon, the magic from the original FC version of Megami Tensei.
+// I created this based on the image of Kandeon, the magic from the original FC version of Megami Tensei.
