@@ -306,7 +306,7 @@ function displayAllTexts(textsArray, size) {
 function intermission(intermissionStart, isFadeIn) {
   const elapsed = frameCount - intermissionStart;
 
-  let factor = (fadeOutFactor = max(0, 1 - max(0, elapsed) / intermissionFadeDuration));
+  let factor = max(0, 1 - max(0, elapsed) / intermissionFadeDuration);
 
   if (isFadeIn) {
     factor = max(0, min(1, 1 - abs(elapsed / intermissionFadeDuration - 1)));
