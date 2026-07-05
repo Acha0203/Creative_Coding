@@ -1,5 +1,4 @@
 const bloomingInterval = 300;
-let angle = 0;
 let flowers = [];
 let t = 0;
 
