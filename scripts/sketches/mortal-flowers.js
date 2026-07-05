@@ -3,7 +3,6 @@ let particles = [];
 let spacing = 4; // 砂の細かさ
 let density = 1; // ディスプレイのピクセル密度
 let initialized = false;
-let collapsed = false;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
